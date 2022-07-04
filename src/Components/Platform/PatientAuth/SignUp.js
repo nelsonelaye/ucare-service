@@ -181,7 +181,7 @@ const Meracle = styled.div`
     outline: none;
 
     background-color: transparent;
-    width: 80%;
+    width: 100%;
     padding: 12px 3px;
     margin: 8px 0;
     box-sizing: border-box;

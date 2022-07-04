@@ -14,10 +14,20 @@ import { FiSearch } from "react-icons/fi";
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { removeUser } from "../../ReduxState/Global";
 
 const AdminHead = ({ image, name }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   // console.log(user);
+  const hospitalId = user.hospital;
+
+  const logOut = () => {
+    dispatch(removeUser());
+    navigate(`/hospital/${hospitalId}/detail`);
+  };
   return (
     <Container>
       {user ? (
@@ -70,47 +80,50 @@ const AdminHead = ({ image, name }) => {
           />
         </Cancel>
         <Header>
-          <img src="/images/icons.png" />
-          <span>U-CARE</span>
+          <img src={user.logo} alt="" />
+          <span>{user.hospitalName}</span>
         </Header>
         <Tops>
-          <MyLink>
+          <NavLink to="/Docview" style={{ textDecoration: "none" }}>
             <Holder>
               <BsBarChart />
               <span>OverView</span>
             </Holder>
-          </MyLink>
+          </NavLink>
 
-          <MyLink>
+          <NavLink to="/Dcreate" style={{ textDecoration: "none" }}>
             <Holder>
               <FaUserAlt />
-              <span>Profile</span>
+              <span> Update Profile</span>
             </Holder>
-          </MyLink>
+          </NavLink>
 
-          <MyLink>
+          <NavLink
+            to="/confirm"
+            style={{ textDecoration: "none", display: "none" }}
+          >
             <Holder>
               <FaCalendarAlt />
-              <span>Book Appointment</span>
+              <span>Confirm Appointment</span>
             </Holder>
-          </MyLink>
-          <Holder>
-            <FaUserNurse />
-            <span>Specialists</span>
-          </Holder>
-          <MyLink>
+          </NavLink>
+
+          <NavLink to="/allpatient" style={{ textDecoration: "none" }}>
+            <Holder>
+              <FaUserNurse />
+              <span>All Patients</span>
+            </Holder>
+          </NavLink>
+          <NavLink to="/all-appointments" style={{ textDecoration: "none" }}>
+            {" "}
             <Holder>
               <FaBriefcaseMedical />
-              <span>Medical History</span>
+              <span>View All Appointments</span>
             </Holder>
-          </MyLink>
+          </NavLink>
         </Tops>
         <Bottom>
-          <Holder
-          //   onClick={() => {
-          //     app.auth().signOut();
-          //   }}
-          >
+          <Holder onClick={logOut}>
             <AiOutlineLogout />
             <span>Log out</span>
           </Holder>

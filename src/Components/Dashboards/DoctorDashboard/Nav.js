@@ -68,7 +68,7 @@ const AdminNav = () => {
             <NavLink to="/Dcreate" style={{ textDecoration: "none" }}>
               <Holder>
                 <FaUserAlt />
-                <span> Create Profile</span>
+                <span> Update Profile</span>
               </Holder>
             </NavLink>
 
@@ -120,7 +120,7 @@ const MyLink = styled.div`
 `;
 
 const Container = styled.div`
-  width: 15vw;
+  width: 250px;
   height: 100vh;
   background: #0000cc;
   display: flex;
@@ -151,6 +151,7 @@ const Header = styled.div`
     width: 70px;
     height: 70px;
     border-radius: 100%;
+    object-fit: cover;
   }
 
   span {
@@ -161,6 +162,7 @@ const Header = styled.div`
     color: white;
     font-size: 22px;
     display: flex;
+    text-align: center;
   }
 `;
 

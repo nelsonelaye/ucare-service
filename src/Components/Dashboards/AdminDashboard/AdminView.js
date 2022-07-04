@@ -159,6 +159,7 @@ const Charts = styled.div`
   width: 100%;
   align-items: center;
   padding: 15px 0px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   @media (max-width: 768px) {
@@ -171,7 +172,7 @@ const Key = styled.div`
   color: var(--tiny);
   font-size: 20px;
   margin: 30px;
-  font-weight: 600;
+  font-weight: 500;
 
   span {
     letter-spacing: 1px;

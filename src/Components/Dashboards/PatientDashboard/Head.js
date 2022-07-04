@@ -14,9 +14,20 @@ import { FiSearch } from "react-icons/fi";
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { removeUser } from "../../ReduxState/Global";
 
 const AdminHead = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const user = useSelector((state) => state.user);
+  const hospitalId = user.hospital;
+
+  const logOut = () => {
+    dispatch(removeUser());
+    navigate(`/hospital/${hospitalId}/detail`);
+  };
 
   return (
     <Container>
@@ -70,47 +81,47 @@ const AdminHead = () => {
           />
         </Cancel>
         <Header>
-          <img src="/images/icons.png" />
-          <span>U-CARE</span>
+          <img src={user.logo} />
+          <span>{user.hospitalName}</span>
         </Header>
         <Tops>
-          <MyLink>
+          <NavLink to="/patient-overview" style={{ textDecoration: "none" }}>
             <Holder>
               <BsBarChart />
               <span>OverView</span>
             </Holder>
-          </MyLink>
+          </NavLink>
 
-          <MyLink>
+          <NavLink to="/create" style={{ textDecoration: "none" }}>
             <Holder>
               <FaUserAlt />
-              <span>Profile</span>
+              <span> Update Profile</span>
             </Holder>
-          </MyLink>
+          </NavLink>
 
-          <MyLink>
+          <NavLink to="/create-appointment" style={{ textDecoration: "none" }}>
             <Holder>
               <FaCalendarAlt />
               <span>Book Appointment</span>
             </Holder>
-          </MyLink>
-          <Holder>
-            <FaUserNurse />
-            <span>Specialists</span>
-          </Holder>
-          <MyLink>
+          </NavLink>
+          <NavLink to="/doc" style={{ textDecoration: "none" }}>
+            <Holder>
+              <FaUserNurse />
+              <span>Specialists</span>
+            </Holder>
+          </NavLink>
+
+          <NavLink to="/history" style={{ textDecoration: "none" }}>
+            {" "}
             <Holder>
               <FaBriefcaseMedical />
-              <span>Medical History</span>
+              <span>Appointment History</span>
             </Holder>
-          </MyLink>
+          </NavLink>
         </Tops>
         <Bottom>
-          <Holder
-          //   onClick={() => {
-          //     app.auth().signOut();
-          //   }}
-          >
+          <Holder onClick={logOut}>
             <AiOutlineLogout />
             <span>Log out</span>
           </Holder>
