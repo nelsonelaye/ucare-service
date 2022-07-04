@@ -12,7 +12,7 @@ import AdminHead from "./Head";
 import AdminNav from "./Nav";
 import { Bar } from "react-chartjs-2";
 import Cards from "./Testing";
-import { CheckChart } from "./CheckChart";
+import { Charttest } from "./CheckChart";
 import { FaWeight } from "react-icons/fa";
 import { GiBodyHeight } from "react-icons/gi";
 import { MdBloodtype } from "react-icons/md";
@@ -138,7 +138,7 @@ const ParientArrange = () => {
           </Second>
           <Charts>
             <Holde>
-              <CheckChart />
+              <Charttest />
             </Holde>
           </Charts>
         </Overviews>
