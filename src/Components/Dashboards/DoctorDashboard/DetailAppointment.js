@@ -91,10 +91,10 @@ const ParientArrange = () => {
                 </Column1>
                 <Column2>
                   <Show>
-                    <span>Date</span>
+                    <span>Date and Time</span>
                     <p>
                       {moment(appointment.dateAndTime).format(
-                        "MMMM d, YYYY hh:mm"
+                        "YYYY MMMM, D hh:mm"
                       )}
                     </p>
                   </Show>
@@ -110,12 +110,7 @@ const ParientArrange = () => {
                   </Show>
                   <Show>
                     <span>Specialist</span>
-                    <p>{appointment.specialist}</p>
-                  </Show>
-
-                  <Show>
-                    <span>Time</span>
-                    <p>7:15am</p>
+                    <p>{appointment.doctorRole}</p>
                   </Show>
                 </Column2>
               </Detailhold>

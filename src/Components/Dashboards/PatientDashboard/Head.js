@@ -11,7 +11,7 @@ import { BiHelpCircle } from "react-icons/bi";
 import { BsBarChart } from "react-icons/bs";
 import { BsBell } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -24,11 +24,33 @@ const AdminHead = () => {
   const user = useSelector((state) => state.user);
   const hospitalId = user.hospital;
 
+  const [hospitalData, setHospitalData] = useState();
+
+  const getHospital = async () => {
+    const mainURL = "https://ucarebackend.herokuapp.com";
+    const localURL = "http://localhost:1210";
+    const url = `${mainURL}/api/hospital/${hospitalId}`;
+    await axios
+      .get(url)
+      .then((res) => {
+        // console.log(res);
+
+        console.log(res);
+        setHospitalData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   const logOut = () => {
     dispatch(removeUser());
     navigate(`/hospital/${hospitalId}/detail`);
   };
 
+  useEffect(() => {
+    getHospital();
+  }, []);
   return (
     <Container>
       {user ? (
@@ -63,7 +85,11 @@ const AdminHead = () => {
             <Name>
               {user.firstName} {user.lastName}
             </Name>
-            <Image src={user.avatar} />
+            {user.avatar ? (
+              <Image src={user.avatar} />
+            ) : (
+              <Image src="/assets/img1.jpg" />
+            )}
           </Right>
         </Top>
       ) : null}
@@ -81,8 +107,8 @@ const AdminHead = () => {
           />
         </Cancel>
         <Header>
-          <img src={user.logo} />
-          <span>{user.hospitalName}</span>
+          <img src={hospitalData.logo} />
+          <span>{hospitalData.hospitalName}</span>
         </Header>
         <Tops>
           <NavLink to="/patient-overview" style={{ textDecoration: "none" }}>

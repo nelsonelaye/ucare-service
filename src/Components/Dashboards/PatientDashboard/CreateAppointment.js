@@ -62,30 +62,42 @@ const ParientArrange = () => {
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/${hospitalId}/patient/${patientId}/appointment`;
 
-    const res = await axios.post(
-      url,
-      {
-        patientName,
-        patientCase,
-        symptoms,
-        allergies,
-        specialist,
-        department,
-        brief,
-        dateAndTime,
-        doctorId,
-      },
-      config
-    );
+    const res = await axios
+      .post(
+        url,
+        {
+          patientName,
+          patientCase,
+          symptoms,
+          allergies,
+          specialist,
+          department,
+          brief,
+          dateAndTime,
+          doctorId,
+        },
+        config
+      )
+      .then((res) => {
+        console.log(res);
+        // dispatch(createUser(res.data.data));
+        navigate("/patient-overview");
+        Swal.fire({
+          icon: "success",
+          title: "Appointment Set!",
+          html: `<b>An email will be sent to your inbox with confirmation date and time</b>`,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        // dispatch(createUser(res.data.data));
 
-    console.log(res);
-    dispatch(createUser(res.data.data));
-    navigate("/");
-    Swal.fire({
-      icon: "success",
-      title: "Appointment Set!",
-      html: `<b>An email will be sent to your inbox with confirmation date and time</b>`,
-    });
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.response,
+        });
+      });
   });
 
   const getDoctors = async () => {

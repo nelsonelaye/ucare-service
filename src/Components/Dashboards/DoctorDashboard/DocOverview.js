@@ -30,7 +30,11 @@ const DocOverview = () => {
               <First>
                 <Profile>
                   <ProfileWrap>
-                    <Pics src={user.avatar} />
+                    {user.avatar ? (
+                      <Pics src={user.avatar} />
+                    ) : (
+                      <Pics src="/assets/profbak.png" />
+                    )}
                     <Name>Doctor {`${user.lastName} ${user.firstName}`}</Name>
                     <Patient>{user.specialization}</Patient>
                   </ProfileWrap>

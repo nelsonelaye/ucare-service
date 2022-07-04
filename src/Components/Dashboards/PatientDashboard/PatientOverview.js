@@ -34,7 +34,12 @@ const PatientOverview = () => {
               <First>
                 <Profile>
                   <ProfileWrap>
-                    <Pics src={user.avatar} />
+                    {user.avatar ? (
+                      <Pics src={user.avatar} />
+                    ) : (
+                      <Pics src="/assets/img1.jpg" />
+                    )}
+
                     <Name>
                       Name: {user.firstName} {user.lastName}
                     </Name>
@@ -109,14 +114,14 @@ const PatientOverview = () => {
                 />
                 <Cards
                   tColor={"#E46B8F"}
-                  spane={`${JSON.stringify(user.height)}cm`}
+                  spane={user.height}
                   Icontag={<GiBodyHeight />}
                   texts="Height"
                   IColor={"#E46B8F"}
                 />
                 <Cards
                   tColor={"#4DB6AC"}
-                  spane={`${user.weight}Kg`}
+                  spane={user.weight}
                   Icontag={<FaWeight />}
                   texts="Weight"
                   IColor={"#4DB6AC"}
@@ -391,7 +396,7 @@ const Profile = styled.div`
   height: 310px;
   padding: 20px;
   width: 310px;
-  background: url("/images/profbak.png");
+  background: url("/assets/profbak.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -14,9 +14,16 @@ import { AiOutlineLogout, AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 import { useSelector } from "react-redux";
 const AdminHead = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  console.log(user);
+  const hospitalId = user._id;
 
+  console.log(user);
+  const logOut = () => {
+    dispatch(removeUser());
+    navigate(`/hospital/${hospitalId}/detail`);
+  };
   return (
     <Container>
       <Top>
@@ -84,36 +91,48 @@ const AdminHead = () => {
           />
         </Cancel>
         <Header>
-          <img src="/assets/icons.png" />
-          <span>U-CARE</span>
+          <img src={user.logo} alt="" />
+          <span>{user.hospitalName}</span>
         </Header>
         <Tops>
-          <MyLink>
+          <NavLink to="/" style={{ textDecoration: "none" }}>
             <Holder>
               <BsBarChart />
               <span>OverView</span>
             </Holder>
-          </MyLink>
+          </NavLink>
 
-          <MyLink>
+          <NavLink to="/create" style={{ display: "none" }}>
             <Holder>
               <FaUserAlt />
               <span>Profile</span>
             </Holder>
-          </MyLink>
+          </NavLink>
 
-          <MyLink>
+          <NavLink to="/all-appointments" style={{ textDecoration: "none" }}>
             <Holder>
               <FaCalendarAlt />
-              <span>Book Appointment</span>
+              <span>View Appointments</span>
             </Holder>
-          </MyLink>
-          <Holder>
-            <FaUserNurse />
-            <span>Specialists</span>
-          </Holder>
-          <MyLink>
+          </NavLink>
+
+          <NavLink to="/all-specialists" style={{ textDecoration: "none" }}>
+            {" "}
             <Holder>
+              <FaUserNurse />
+              <span>Specialists</span>
+            </Holder>
+          </NavLink>
+
+          <NavLink to="/all-patients" style={{ textDecoration: "none" }}>
+            <Holder>
+              <FaBriefcaseMedical />
+              <span>Patients</span>
+            </Holder>
+          </NavLink>
+
+          <MyLink>
+            <Holder style={{ display: "none" }}>
               <FaBriefcaseMedical />
               <span>Medical History</span>
             </Holder>
@@ -126,7 +145,13 @@ const AdminHead = () => {
           //   }}
           >
             <AiOutlineLogout />
-            <span>Log out</span>
+            <span
+              onClick={() => {
+                logOut();
+              }}
+            >
+              Log out
+            </span>
           </Holder>
         </Bottom>
       </SideBar>

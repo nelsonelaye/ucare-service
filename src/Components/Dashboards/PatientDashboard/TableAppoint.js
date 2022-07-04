@@ -41,7 +41,7 @@ const Lets = () => {
     const url = `${mainURL}/api/hospital/${hospitalId}/patient/${user._id}`;
     await axios.get(url).then((res) => {
       console.log("this is the response", res?.data?.data);
-      setAllAppointments(res?.data?.data?.appointments);
+      setAllAppointments(res?.data?.data?.appointments?.reverse());
     });
   };
   //   const getPatients = async () => {
@@ -70,7 +70,6 @@ const Lets = () => {
             <TableCell>Image</TableCell>
             <TableCell>Specialists</TableCell>
             <TableCell>Date</TableCell>
-            <TableCell>Time</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -94,9 +93,10 @@ const Lets = () => {
                 />
               </TableCell>
 
-              <TableCell>{row.doctor}</TableCell>
-              <TableCell>{moment(row.date).format("MMMM d, YYYY")}</TableCell>
-              <TableCell>{moment(row.time).format("h:mma")}</TableCell>
+              <TableCell>{row.doctorName}</TableCell>
+              <TableCell>
+                {moment(row.dateAndTime).format("YYYY MMMMM, D  hh:mm")}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

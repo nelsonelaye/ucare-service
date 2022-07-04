@@ -167,13 +167,12 @@ const SignUp = () => {
                   <Input>
                     <Error>{errors.message && errors?.message.UHID}</Error>
                     <nav>
-                      RC Number <span style={{ color: "red" }}>*</span>
+                      CAC <span style={{ color: "red" }}>*</span>
                     </nav>
                     <input
                       type="text"
-                      min="4"
-                      max="7"
-                      placeholder="RC Number"
+                      minlength="4"
+                      placeholder="CAC Number"
                       {...register("UHID")}
                       required
                     />

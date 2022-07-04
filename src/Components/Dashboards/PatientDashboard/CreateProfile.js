@@ -18,12 +18,13 @@ const UpdatePatient = () => {
   const hospitalId = user.hospital;
   const patientId = user._id;
 
+  const [initImage, setInitImage] = useState(user.avatar);
   const [avatar, setAvatar] = useState(user.avatar);
 
   const handleImage = (e) => {
     const file = e.target.files[0];
     const save = URL.createObjectURL(file);
-    // setImage(save);
+    setInitImage(save);
     setAvatar(file);
   };
 
@@ -112,7 +113,7 @@ const UpdatePatient = () => {
             <BlueBack>Update Profile</BlueBack>
             <AllForm onSubmit={onSubmit}>
               <ImageHolder>
-                <Image src={avatar} />
+                <Image src={initImage} />
                 <ImageLabel htmlFor="pix">Upload Avatar</ImageLabel>
                 <ImageInput
                   id="pix"
@@ -364,7 +365,7 @@ const BlueBack = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-  font-family: -apple-system;
+  font-family: poppins;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   font-size: 30px;
