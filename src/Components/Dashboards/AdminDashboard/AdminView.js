@@ -12,6 +12,7 @@ import AdminHead from "./Head";
 import AdminNav from "./Nav";
 import { Bar } from "react-chartjs-2";
 import Cards from "./Testing";
+import { CheckChart } from "./CheckChart";
 import { FaWeight } from "react-icons/fa";
 import { GiBodyHeight } from "react-icons/gi";
 import { MdBloodtype } from "react-icons/md";
@@ -95,6 +96,9 @@ const ParientArrange = () => {
       });
   };
 
+  const copyKey = (text) => {
+    navigator.clipboard.writeText(text);
+  };
   useEffect(() => {
     getHospital();
   }, []);
@@ -109,7 +113,7 @@ const ParientArrange = () => {
         </Headers>
         <Overviews>
           <Key>
-            Hospital Key: <span>{user.key}</span>{" "}
+            Hospital Key: <span onClick={copyKey(user.key)}>{user.key}</span>{" "}
           </Key>
           <Second>
             <Cards
@@ -134,7 +138,7 @@ const ParientArrange = () => {
           </Second>
           <Charts>
             <Holde>
-              <Bar options={options} data={data} />;
+              <CheckChart />
             </Holde>
           </Charts>
         </Overviews>
@@ -167,6 +171,7 @@ const Key = styled.div`
   color: var(--tiny);
   font-size: 20px;
   margin: 30px;
+  font-weight: 600;
 
   span {
     letter-spacing: 1px;
