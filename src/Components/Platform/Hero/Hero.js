@@ -72,6 +72,11 @@ const Uplayer = styled.div`
   display: flex;
   justify-content: center;
   /* align-items: center; */
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const Awesome = styled.div`
   display: flex;
@@ -92,10 +97,15 @@ const Features = styled.div`
   color: black;
   text-transform: capitalize;
   font-weight: 600;
-  /* align-items: center; */
+  align-items: center;
+  text-align: center;
   span {
     color: red;
     font-weight: 700;
+  }
+
+  @media screen and (max-width: 768px) {
+    // font-size: 1.5rem;
   }
 `;
 const Container = styled.div`
@@ -123,14 +133,20 @@ const Layer1 = styled.div`
   background-color: rgba(0, 0, 255, 0.1);
   color: #3100ff;
   font-weight: 500;
+  @media screen and (max-width: 425px) {
+    width: 80%;
+  }
 `;
 const Layer2 = styled.div`
   /* background-color: pink; */
   margin-top: 40px;
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     width: 90%;
-    text-align:center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 const Best = styled.div`
@@ -145,6 +161,11 @@ const Trust = styled.div`
   font-size: 2.5rem;
   font-weight: 700;
   margin-top: 20px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+    margin: 10px 0;
+  }
 `;
 const Buttonwrap = styled.div`
   display: flex;
@@ -153,6 +174,9 @@ const Buttonwrap = styled.div`
   /* background-color: green; */
   margin-top: 25px;
   width: 280px;
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const Button = styled.div`
@@ -171,8 +195,13 @@ const Button = styled.div`
 `;
 const Right = styled.div`
   width: 50%;
-  height: 400px;
+  // height: 400px;
   /* background-color: green; */
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    margin: 20px 0;
+  }
 `;
 
 const Imagewrap = styled.div`
@@ -180,10 +209,10 @@ const Imagewrap = styled.div`
   justify-content: center;
   /* align-items: center; */
   flex-direction: column;
-  /* height: 500px;
-  width: 500px; */
+  /* height: 500px;*/
+  width: 100%;
   /* background-color: yellow; */
-  margin-top: 40px;
+  margin-top: 20px;
   img {
     height: 100%;
     width: 100%;
@@ -205,7 +234,8 @@ const Left = styled.div`
   flex-direction: column;
   /* background-color: red; */
 
-  @media screen and (max-width: 768px){
-
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    align-items: center;
   }
 `;
