@@ -176,6 +176,7 @@ const Header = styled.div`
     color: white;
     font-size: 22px;
     display: flex;
+    text-align: center;
   }
 `;
 

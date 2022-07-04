@@ -385,12 +385,16 @@ const Rightwrap = styled.div`
 `;
 
 const Nav1 = styled.div`
-  width: 350px;
+  width: 100%;
   font-size: 30px;
   font-weight: 650;
-  text-align: center;
+
   color: var(--color);
   text-transform: capitalize;
+
+  @media screen and (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
 
 const Welcome = styled.div`
