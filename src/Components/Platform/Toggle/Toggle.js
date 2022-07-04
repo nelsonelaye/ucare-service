@@ -1,0 +1,210 @@
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+const SignUpe = () => {
+  const { hospitalId } = useParams();
+  const [hospitalData, setHospitalData] = useState();
+  console.log(hospitalId);
+
+  const getHospital = async () => {
+    const mainURL = "https://ucarebackend.herokuapp.com";
+    const localURL = "http://localhost:1210";
+    const url = `${mainURL}/api/hospital/${hospitalId}`;
+    await axios
+      .get(url)
+      .then((res) => {
+        // console.log(res);
+
+        console.log(res);
+        setHospitalData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  useEffect(() => {
+    console.log(hospitalId);
+  }, []);
+  return (
+    <Container>
+      <Everyhold>
+        <Wrapper>
+          <Card1>
+            <Hero src="/assets/hoslogo.webp" />
+            <Title>Continue To U-CARE</Title>
+            <Describe>
+              We guarantee you the Best of healthcare at an affordable price
+            </Describe>
+
+            <Link
+              to={`/hospital/${hospitalId}/admin`}
+              style={{ textDecoration: "none", color: "initial" }}
+            >
+              <PatientCard>
+                <Avatar src="/assets/img2.jpg" />
+                <Notes>
+                  <span>I'm an Admin </span>
+                  <p>Let's save lives</p>
+                </Notes>
+              </PatientCard>
+            </Link>
+
+            <Link
+              to={`/hospital/${hospitalId}/doctor`}
+              style={{ textDecoration: "none", color: "initial" }}
+            >
+              <PatientCard>
+                <Avatar src="/assets/profbak.png" />
+
+                <Notes>
+                  <span>I'm a Doctor</span>
+                  <p>Giving the best care is my priority</p>
+                </Notes>
+              </PatientCard>
+            </Link>
+
+            <Link
+              to={`/hospital/${hospitalId}/patient`}
+              style={{ textDecoration: "none", color: "initial" }}
+            >
+              <PatientCard>
+                <Avatar src="/assets/img1.jpg" />
+                <Notes>
+                  <span>I'm a Patient </span>
+                  <p>Getting the best care is the ultimate</p>
+                </Notes>
+              </PatientCard>
+            </Link>
+          </Card1>
+          <Card2>
+            <Undraw src="/assets/undraw.jpeg" />
+          </Card2>
+        </Wrapper>
+      </Everyhold>
+    </Container>
+  );
+};
+
+export default SignUpe;
+const PatientCard = styled.div`
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  padding: 10px 25px;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 30px;
+  transition: all 350ms;
+  width: 320px;
+  /* width: 100%; */
+  :hover {
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 255, 0.6);
+    transform: scale(1.009);
+  }
+`;
+const Notes = styled.div`
+  padding: 0px 20px;
+  width: 90%;
+  span {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 13px;
+    margin: 0;
+    line-height: 20px;
+  }
+`;
+const Avatar = styled.img`
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+`;
+const Hero = styled.img`
+  height: 50px;
+  width: 50px;
+  padding: 10px 0px;
+`;
+const Title = styled.div`
+  font-size: 15px;
+  font-weight: 600;
+`;
+const Describe = styled.div`
+  font-size: 12px;
+  padding: 10px 0px;
+  text-align: center;
+`;
+const Everyhold = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const Undraw = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+`;
+const Card1 = styled.div`
+  height: 100%;
+  width: 450px;
+  background-color: white;
+  // display: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 800px) {
+    border-radius: 10px;
+    // width: 340px;
+    // box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    width: 100%;
+  }
+`;
+const Card2 = styled.div`
+  border-radius: 0 10px 10px 0;
+  height: 100%;
+  width: 450px;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+`;
+const Wrapper = styled.div`
+  height: 90%;
+  //   width: 900px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  // box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  @media screen and (max-width: 800px) {
+    width: 340px;
+  }
+`;
+const Container = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  z-index: 100;
+  background: white;
+  top: 0;
+`;
