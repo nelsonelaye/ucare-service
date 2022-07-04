@@ -127,6 +127,11 @@ const Layer1 = styled.div`
 const Layer2 = styled.div`
   /* background-color: pink; */
   margin-top: 40px;
+
+  @media screen and (max-width: 768px){
+    width: 90%;
+    text-align:center;
+  }
 `;
 const Best = styled.div`
   font-size: 1rem;
@@ -199,4 +204,8 @@ const Left = styled.div`
   /* align-items: center; */
   flex-direction: column;
   /* background-color: red; */
+
+  @media screen and (max-width: 768px){
+
+  }
 `;
