@@ -139,7 +139,7 @@ const DocCreate = () => {
                 <input
                   type="text"
                   placeholder={user.firstName}
-                  value={user.firstName}
+                  defaultValue={user.firstName}
                   contenteditable="true"
                   {...register("firstName")}
                 />
@@ -149,7 +149,7 @@ const DocCreate = () => {
                 <input
                   type="text"
                   placeholder={user.lastName}
-                  value={user.lastName}
+                  defaultValue={user.lastName}
                   contenteditable="true"
                   {...register("lastName")}
                 />

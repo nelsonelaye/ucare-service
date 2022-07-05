@@ -101,9 +101,11 @@ const DocOverview = () => {
                         <Title>Date of Birth:</Title>
                         <Show>
                           <BsCalendar2DateFill />
-                          <span>
-                            {moment(doctor.DOB).format("MMMM d, YYYY")}
-                          </span>
+                          {doctor.DOB ? (
+                            <span>
+                              {moment(doctor.DOB).format("MMMM d, YYYY")}
+                            </span>
+                          ) : null}
                         </Show>
                       </GenWrap>
                       <GenWrap>
@@ -111,7 +113,7 @@ const DocOverview = () => {
                         <Show>
                           <MdPlace />
 
-                          <span>18, Alaba Street Amukoko.</span>
+                          <span>{doctor.address}</span>
                         </Show>
                       </GenWrap>
                       <GenWrap>
@@ -178,6 +180,7 @@ const Contact = styled.div`
   border-radius: 5px;
   border: 1px solid grey;
   align-items: center;
+  width: 500px;
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
@@ -275,7 +278,7 @@ const Overviews = styled.div`
   width: 90%;
   flex-direction: column;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   // align-items: center;
   /* height:100% ; */
 `;

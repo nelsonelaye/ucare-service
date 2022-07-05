@@ -38,20 +38,30 @@ const Signup = () => {
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/${hospitalId}/patient`;
 
-    const res = await axios.post(url, {
-      email,
-      password,
-      firstName,
-      lastName,
-    });
-    console.log(res);
-    navigate(`/hospital/${hospitalId}/patient`);
-    Swal.fire({
-      icon: "success",
-      title: "Successful!",
-      html: `<b>Check your inbox for verification link.</b>`,
-      footer: "Check your spam folder if mail is not found",
-    });
+    const res = await axios
+      .post(url, {
+        email,
+        password,
+        firstName,
+        lastName,
+      })
+      .then((res) => {
+        console.log(res);
+        Swal.fire({
+          icon: "success",
+          title: "Successful!",
+          html: `<b>Proceed to login</b>`,
+        });
+        navigate(`/hospital/${hospitalId}/patient`);
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...!",
+          text: err.response,
+        });
+      });
   });
 
   return (

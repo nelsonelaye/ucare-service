@@ -71,7 +71,9 @@ const DocOverview = () => {
                       <Title>Date of Birth:</Title>
                       <Show>
                         <BsCalendar2DateFill />
-                        <span>{moment(user.DOB).format("MMMM d, YYYY")}</span>
+                        {user.DOB ? (
+                          <span>{moment(user.DOB).format("MMMM d, YYYY")}</span>
+                        ) : null}
                       </Show>
                     </GenWrap>
                     <GenWrap>
@@ -79,7 +81,7 @@ const DocOverview = () => {
                       <Show>
                         <MdPlace />
 
-                        <span>18, Alaba Street Amukoko.</span>
+                        <span>{user.address}</span>
                       </Show>
                     </GenWrap>
                     <GenWrap>
@@ -145,6 +147,7 @@ const Contact = styled.div`
   border-radius: 5px;
   border: 1px solid grey;
   align-items: center;
+  width: 500px;
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }

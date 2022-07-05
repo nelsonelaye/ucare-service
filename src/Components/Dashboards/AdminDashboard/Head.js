@@ -12,7 +12,9 @@ import {
 } from "react-icons/fa";
 import { AiOutlineLogout, AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeUser } from "../../ReduxState/Global";
+import { useNavigate, NavLink } from "react-router-dom";
 const AdminHead = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

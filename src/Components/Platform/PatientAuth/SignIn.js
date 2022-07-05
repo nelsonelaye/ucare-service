@@ -143,7 +143,7 @@ const SignIn = () => {
             />
           </Meracle>
 
-          <Forgot>Forgot your password</Forgot>
+          <Forgot style={{ display: "none" }}>Forgot your password</Forgot>
           <Button type="submit">Sign in</Button>
         </Inp>
 

@@ -16,13 +16,14 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { removeUser } from "../../ReduxState/Global";
-
+import axios from "axios";
 const AdminHead = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.user);
   const hospitalId = user.hospital;
+  console.log("Got the id", hospitalId);
 
   const [hospitalData, setHospitalData] = useState();
 
@@ -33,10 +34,11 @@ const AdminHead = () => {
     await axios
       .get(url)
       .then((res) => {
-        // console.log(res);
+        console.log("Get response", res);
 
-        console.log(res);
+        // console.log(res);
         setHospitalData(res.data.data);
+        console.log("Hospital data ", hospitalData);
       })
       .catch((err) => {
         console.log(err.message);
@@ -107,8 +109,12 @@ const AdminHead = () => {
           />
         </Cancel>
         <Header>
-          <img src={hospitalData.logo} />
-          <span>{hospitalData.hospitalName}</span>
+          {hospitalData ? (
+            <>
+              <img src={hospitalData.logo} />
+              <span>{hospitalData.hospitalName}</span>
+            </>
+          ) : null}
         </Header>
         <Tops>
           <NavLink to="/patient-overview" style={{ textDecoration: "none" }}>
