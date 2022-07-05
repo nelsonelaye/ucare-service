@@ -111,7 +111,7 @@ const UpdatePatient = () => {
       .catch((err) => {
         setLoad(false);
 
-        console.log(res);
+        console.log(err);
 
         Swal.fire({
           icon: "erro",

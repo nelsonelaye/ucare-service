@@ -16,6 +16,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { removeUser } from "../../ReduxState/Global";
+import axios from "axios";
 
 const AdminHead = ({ image, name }) => {
   const navigate = useNavigate();
