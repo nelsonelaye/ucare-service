@@ -10,11 +10,17 @@ import { GiHospitalCross } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
 import Swal from "sweetalert2";
+import LoadingState from "../../Loading/LoadingState";
 
 const OTP = () => {
   const { hospitalId, token } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [load, setLoad] = useState(false);
+  const showLoad = () => {
+    setLoad(true);
+  };
 
   const formSchema = yup.object().shape({
     inputOTP: yup.string().required("this field must not be empty"),
@@ -35,6 +41,8 @@ const OTP = () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/${hospitalId}/${token}/verify`;
+
+    showLoad();
 
     const res = await axios.post(url, { inputOTP });
     // if (res.data.data) {
@@ -69,6 +77,8 @@ const OTP = () => {
 
   return (
     <Container>
+      {load ? <LoadingState /> : null}
+
       <Wrapper>
         <Right>
           <Form onSubmit={onSubmit}>

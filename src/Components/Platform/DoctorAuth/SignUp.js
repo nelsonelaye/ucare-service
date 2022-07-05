@@ -8,11 +8,18 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
+import LoadingState from "../../Loading/LoadingState";
+
 const Signup = () => {
   const { hospitalId } = useParams();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [load, setLoad] = useState(false);
+  const showLoad = () => {
+    setLoad(true);
+  };
 
   const formSchema = yup.object().shape({
     email: yup.string().email().required("This field is required"),
@@ -38,6 +45,8 @@ const Signup = () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/${hospitalId}/doctor`;
+
+    showLoad();
 
     await axios
       .post(url, {
@@ -88,6 +97,8 @@ const Signup = () => {
 
   return (
     <Cont>
+      {load ? <LoadingState /> : null}
+
       <Card>
         <Text>
           <h1>Get on Board</h1>

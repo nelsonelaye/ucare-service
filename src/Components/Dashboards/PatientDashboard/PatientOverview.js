@@ -79,7 +79,7 @@ const PatientOverview = () => {
                       <Title>Date of Birth:</Title>
                       <Show>
                         <BsCalendar2DateFill />
-                        <span>{moment(user.DOB).format("MMMM d, YYYY")}</span>
+                        <span>{moment(user.DOB).format("MMMM dd, YYYY")}</span>
                       </Show>
                     </GenWrap>
 
@@ -350,6 +350,8 @@ const Birth = styled.div`
 const Contact = styled.div`
   display: flex;
   height: 310px;
+  padding: 20px;
+  width: 500px;
   background: #eeeeff;
   align-items: center;
   @media screen and (max-width: 768px) {
@@ -395,7 +397,7 @@ const ProfileWrap = styled.div`
 const Profile = styled.div`
   height: 310px;
   padding: 20px;
-  width: 310px;
+  width: 250px;
   background: url("/assets/profbak.png");
   background-position: center;
   background-repeat: no-repeat;

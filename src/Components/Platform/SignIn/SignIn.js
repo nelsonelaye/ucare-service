@@ -10,11 +10,19 @@ import { GiHospitalCross } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
 import Swal from "sweetalert2";
+import LoadingState from "../../Loading/LoadingState";
+
 const SignIn = () => {
   const { hospitalId } = useParams();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [load, setLoad] = useState(false);
+
+  const showLoad = () => {
+    setLoad(true);
+  };
 
   const formSchema = yup.object().shape({
     email: yup.string().email().required("This field is required"),
@@ -40,6 +48,8 @@ const SignIn = () => {
     const config = {
       "content-type": "multipart/form-data",
     };
+
+    showLoad();
 
     await axios
       .post(url, { email, password })
@@ -113,6 +123,8 @@ const SignIn = () => {
   });
   return (
     <Container>
+      {load ? <LoadingState /> : null}
+
       <Wrapper>
         <Right>
           <Form onSubmit={onSubmit} type="multipart/form-data">

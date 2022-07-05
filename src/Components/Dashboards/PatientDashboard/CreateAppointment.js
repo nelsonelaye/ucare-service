@@ -7,12 +7,18 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import LoadingState from "../../Loading/LoadingState";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
 import { Link, useNavigate, useParams } from "react-router-dom";
 const ParientArrange = () => {
   const navigate = useNavigate();
   const [doctors, setDoctors] = useState();
+  const [load, setLoad] = useState(false);
+
+  const showLoad = () => {
+    setLoad(true);
+  };
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const hospitalId = user.hospital;
@@ -60,9 +66,10 @@ const ParientArrange = () => {
     };
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/patient/${patientId}/appointment`;
+    const url = `${localURL}/api/hospital/${hospitalId}/patient/${patientId}/appointment`;
 
-    const res = await axios
+    showLoad();
+    await axios
       .post(
         url,
         {
@@ -79,24 +86,27 @@ const ParientArrange = () => {
         config
       )
       .then((res) => {
-        console.log(res);
+        console.log("Appoinment sponse", res);
+        console.log("On local");
         // dispatch(createUser(res.data.data));
         navigate("/patient-overview");
         Swal.fire({
           icon: "success",
           title: "Appointment Set!",
-          html: `<b>An email will be sent to your inbox with confirmation date and time</b>`,
+          html: `<p>An email will be sent to your inbox with confirmation date and time</p>`,
         });
+        setLoad(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Appoinment error: ", err);
         // dispatch(createUser(res.data.data));
 
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: err.response,
+          text: err.response.data.message,
         });
+        setLoad(false);
       });
   });
 
@@ -115,6 +125,7 @@ const ParientArrange = () => {
   }, []);
   return (
     <Container>
+      {load ? <LoadingState /> : null}
       <Left>
         <AdminNav />
       </Left>

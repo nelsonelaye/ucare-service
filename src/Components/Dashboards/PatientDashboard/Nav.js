@@ -28,7 +28,7 @@ const AdminNav = () => {
   const getHospital = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}`;
     await axios
       .get(url)
       .then((res) => {
@@ -119,7 +119,7 @@ const MyLink = styled.div`
 `;
 
 const Container = styled.div`
-  width: 15vw;
+  width: 250px;
   height: 100vh;
   background: #0000cc;
   display: flex;
@@ -150,6 +150,7 @@ const Header = styled.div`
     width: 70px;
     height: 70px;
     border-radius: 100%;
+    object-fit: cover;
   }
 
   span {
@@ -160,6 +161,7 @@ const Header = styled.div`
     color: white;
     font-size: 22px;
     display: flex;
+    text-align: center;
   }
 `;
 

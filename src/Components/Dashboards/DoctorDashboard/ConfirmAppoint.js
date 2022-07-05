@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import LoadingState from "../../Loading/LoadingState";
 
 const ParientArrange = () => {
   const navigate = useNavigate();
@@ -17,11 +18,18 @@ const ParientArrange = () => {
   const url = useParams();
   console.log(url);
 
+  const [load, setLoad] = useState(false);
+
+  const showLoad = () => {
+    setLoad(true);
+  };
+
   console.log(appointmentId);
   const user = useSelector((state) => state.user);
   const [appointment, setAppointment] = useState();
   const dispatch = useDispatch();
   const hospitalId = user.hospital;
+
   const formSchema = yup.object().shape({
     specialist: yup.string(),
     department: yup.string(),
@@ -50,6 +58,7 @@ const ParientArrange = () => {
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/${hospitalId}/appointment/${appointmentId}`;
 
+    showLoad();
     const res = await axios.patch(
       url,
       {
@@ -74,6 +83,8 @@ const ParientArrange = () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/appointment/${appointmentId}`;
+
+    showLoad();
     await axios
       .get(url)
       .then((res) => {
@@ -90,6 +101,8 @@ const ParientArrange = () => {
   }, []);
   return (
     <Container>
+      {load ? <LoadingState /> : null}
+
       <Left>
         <AdminNav />
       </Left>

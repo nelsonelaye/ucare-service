@@ -8,12 +8,19 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
+import LoadingState from "../../Loading/LoadingState";
+
 const SignIn = () => {
   const params = useParams();
   console.log(params);
   const hospitalId = params.hospitalId;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [load, setLoad] = useState(false);
+  const showLoad = () => {
+    setLoad(true);
+  };
 
   const formSchema = yup.object().shape({
     email: yup.string().email().required("This field is required"),
@@ -36,6 +43,7 @@ const SignIn = () => {
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/${hospitalId}/doctor/login`;
 
+    showLoad();
     await axios
       .post(url, { email, password })
       .then((res) => {
@@ -117,6 +125,8 @@ const SignIn = () => {
 
   return (
     <Cont>
+      {load ? <LoadingState /> : null}
+
       <Card>
         <Text>
           <h1>

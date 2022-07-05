@@ -4,6 +4,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import LoadingState from "../../Loading/LoadingState";
+
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
 import { GiHospitalCross } from "react-icons/gi";
@@ -15,6 +17,12 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const [image, setImage] = useState("/assets/hoslogo.png");
   const [logo, setLogo] = useState("");
+
+  const [load, setLoad] = useState(false);
+
+  const showLoad = () => {
+    setLoad(true);
+  };
 
   const formSchema = yup.object().shape({
     hospitalName: yup.string(),
@@ -76,6 +84,8 @@ const SignUp = () => {
     const config = {
       "content-type": "multipart/form-data",
     };
+
+    showLoad();
     await axios
       .post(url, formData, config)
       .then((res) => {
@@ -127,6 +137,8 @@ const SignUp = () => {
 
   return (
     <Container>
+      {load ? <LoadingState /> : null}
+
       <Wrapper>
         <Right>
           <Form onSubmit={onSubmit} type="multipart/form-data">

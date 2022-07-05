@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
+import LoadingState from "../../Loading/LoadingState";
+
 const DocCreate = () => {
   // const [avatar, setAvatar] = useState();
   const navigate = useNavigate();
@@ -20,6 +22,11 @@ const DocCreate = () => {
   const dispatch = useDispatch();
   const hospitalId = user.hospital;
   const doctorId = user._id;
+
+  const [load, setLoad] = useState(false);
+  const showLoad = () => {
+    setLoad(true);
+  };
 
   const handleImage = (e) => {
     const file = e.target.files[0];
@@ -83,6 +90,7 @@ const DocCreate = () => {
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
 
+    showLoad();
     const res = await axios.patch(url, formData, config);
     console.log(res);
     dispatch(createUser(res.data.data));
@@ -96,6 +104,8 @@ const DocCreate = () => {
 
   return (
     <Container>
+      {load ? <LoadingState /> : null}
+
       <Left>
         <AdminNav />
       </Left>

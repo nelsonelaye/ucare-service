@@ -23,22 +23,22 @@ const AdminHead = () => {
 
   const user = useSelector((state) => state.user);
   const hospitalId = user.hospital;
-  console.log("Got the id", hospitalId);
+  console.log("Got the hospital id", hospitalId);
 
   const [hospitalData, setHospitalData] = useState();
 
   const getHospital = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}`;
     await axios
       .get(url)
       .then((res) => {
-        console.log("Get response", res);
+        console.log("Get response from the Head", res);
 
         // console.log(res);
         setHospitalData(res.data.data);
-        console.log("Hospital data ", hospitalData);
+        console.log("Hospital data on the Head", hospitalData);
       })
       .catch((err) => {
         console.log(err.message);

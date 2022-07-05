@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import LoadingState from "../../Loading/LoadingState";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../ReduxState/Global";
@@ -17,6 +18,12 @@ const UpdatePatient = () => {
   const dispatch = useDispatch();
   const hospitalId = user.hospital;
   const patientId = user._id;
+
+  const [load, setLoad] = useState(false);
+
+  const showLoad = () => {
+    setLoad(true);
+  };
 
   const [initImage, setInitImage] = useState(user.avatar);
   const [avatar, setAvatar] = useState(user.avatar);
@@ -86,21 +93,35 @@ const UpdatePatient = () => {
     };
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/patient/${patientId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}/patient/${patientId}`;
 
-    const res = await axios.patch(url, formData, config);
-    console.log(res);
-    dispatch(createUser(res.data.data));
-    navigate("/");
-    Swal.fire({
-      icon: "success",
-      title: "Profile Updated!",
-      html: `<b>Keep doing magic</b>`,
-    });
+    showLoad();
+    await axios
+      .patch(url, formData, config)
+      .then((res) => {
+        console.log(res);
+        dispatch(createUser(res.data.data));
+        navigate("/");
+        Swal.fire({
+          icon: "success",
+          title: "Profile Updated!",
+          html: `<b>Keep doing magic</b>`,
+        });
+      })
+      .catch((err) => {
+        console.log(res);
+
+        Swal.fire({
+          icon: "erro",
+          title: "Oops...",
+          text: err.response.data.message,
+        });
+      });
   });
 
   return (
     <Container>
+      {load ? <LoadingState /> : null}
       <Left>
         <AdminNav />
       </Left>
@@ -127,8 +148,8 @@ const UpdatePatient = () => {
                 <span>First Name</span>
                 <input
                   type="text"
-                  placeholder="Enter your First Name"
-                  value={user.firstName}
+                  placeholder={user.firstName}
+                  defaultValue={user.firstName}
                   {...register("firstName")}
                 />
               </Inputer>
@@ -136,8 +157,8 @@ const UpdatePatient = () => {
                 <span>Last Name</span>
                 <input
                   type="text"
-                  placeholder="Enter your Last Name"
-                  value={user.lastName}
+                  placeholder={user.lastName}
+                  defaultValue={user.lastName}
                   {...register("lastName")}
                 />
               </Inputer>
@@ -188,7 +209,7 @@ const UpdatePatient = () => {
                 <input
                   type="number"
                   placeholder={user.weight}
-                  value={user.weight}
+                  defaultValue={user.weight}
                   {...register("weight")}
                 />
               </Inputer>
@@ -197,7 +218,7 @@ const UpdatePatient = () => {
                 <input
                   type="number"
                   placeholder={user.height}
-                  value={user.height}
+                  defaultValue={user.height}
                   {...register("height")}
                 />
               </Inputer>
@@ -206,7 +227,7 @@ const UpdatePatient = () => {
                 <input
                   type="tel"
                   placeholder={user.telephone}
-                  value={user.telephone}
+                  defaultValue={user.telephone}
                   {...register("telephone")}
                 />
               </Inputer>
@@ -215,7 +236,7 @@ const UpdatePatient = () => {
                 <input
                   type="text"
                   placeholder="Enter your Address"
-                  value={user.address}
+                  defaultValue={user.address}
                   {...register("address")}
                 />
               </Inputer>
