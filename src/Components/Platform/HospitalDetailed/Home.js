@@ -6,22 +6,18 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import LoadingState from "../../Loading/LoadingState";
+// import LoadingState from "../../Loading/LoadingState";
 
 const Home = () => {
   const { hospitalId } = useParams();
   const [hospitalData, setHospitalData] = useState();
-  const [load, setLoad] = useState(false);
-  const showLoad = () => {
-    setLoad(true);
-  };
 
   const getHospital = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
     const url = `${localURL}/api/hospital/${hospitalId}`;
 
-    showLoad();
+    // showLoad();
     await axios
       .get(url)
       .then((res) => {
@@ -40,8 +36,6 @@ const Home = () => {
   }, []);
   return (
     <Container>
-      {load ? <LoadingState /> : null}
-
       {hospitalData ? (
         <>
           <Header image={hospitalData.logo} hospitalId={hospitalData._id} />

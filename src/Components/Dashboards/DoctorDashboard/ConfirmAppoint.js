@@ -93,6 +93,8 @@ const ParientArrange = () => {
         console.log(appointment);
       })
       .catch((err) => {
+        setLoad(false);
+
         console.log(err.message);
       });
   };

@@ -55,6 +55,7 @@ const Signup = () => {
         navigate(`/hospital/${hospitalId}/patient`);
       })
       .catch((err) => {
+        setLoad(false);
         console.log(err);
         Swal.fire({
           icon: "error",

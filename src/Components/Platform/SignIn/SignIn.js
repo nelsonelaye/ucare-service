@@ -64,6 +64,8 @@ const SignIn = () => {
         navigate("/admin-overview");
       })
       .catch((err) => {
+        setLoad(false);
+
         if (err.response.status === 404) {
           console.log(err.response);
 

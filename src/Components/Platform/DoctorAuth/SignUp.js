@@ -47,7 +47,6 @@ const Signup = () => {
     const url = `${mainURL}/api/hospital/${hospitalId}/doctor`;
 
     showLoad();
-
     await axios
       .post(url, {
         email,
@@ -66,6 +65,7 @@ const Signup = () => {
         navigate(`/hospital/${hospitalId}/doctor`);
       })
       .catch((err) => {
+        setLoad(false);
         console.log(err);
         if (err.response.status === 400) {
           Swal.fire({

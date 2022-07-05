@@ -91,15 +91,36 @@ const DocCreate = () => {
     const url = `${mainURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
 
     showLoad();
-    const res = await axios.patch(url, formData, config);
-    console.log(res);
-    dispatch(createUser(res.data.data));
-    navigate("/doctor-overview");
-    Swal.fire({
-      icon: "success",
-      title: "Profile Updated!",
-      html: `<b>Keep doing magic</b>`,
-    });
+    await axios
+      .patch(url, formData, config)
+      .yhen((res) => {
+        console.log(res);
+        dispatch(createUser(res.data.data));
+        navigate("/doctor-overview");
+        Swal.fire({
+          icon: "success",
+          title: "Profile Updated!",
+          html: `<b>Keep doing magic</b>`,
+        });
+      })
+      .catch((err) => {
+        setLoad(false);
+        console.log(err);
+
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.response.data.message,
+        });
+      });
+    // console.log(res);
+    // dispatch(createUser(res.data.data));
+    // navigate("/doctor-overview");
+    // Swal.fire({
+    //   icon: "success",
+    //   title: "Profile Updated!",
+    //   html: `<b>Keep doing magic</b>`,
+    // });
   });
 
   return (

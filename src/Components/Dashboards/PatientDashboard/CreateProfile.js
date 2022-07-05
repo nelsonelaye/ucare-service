@@ -109,6 +109,8 @@ const UpdatePatient = () => {
         });
       })
       .catch((err) => {
+        setLoad(false);
+
         console.log(res);
 
         Swal.fire({

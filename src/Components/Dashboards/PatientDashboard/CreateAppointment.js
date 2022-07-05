@@ -98,6 +98,8 @@ const ParientArrange = () => {
         setLoad(false);
       })
       .catch((err) => {
+        setLoad(false);
+
         console.log("Appoinment error: ", err);
         // dispatch(createUser(res.data.data));
 

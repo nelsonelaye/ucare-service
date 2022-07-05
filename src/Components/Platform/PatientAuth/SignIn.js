@@ -58,6 +58,8 @@ const SignIn = () => {
         navigate("/patient-overview");
       })
       .catch((err) => {
+        setLoad(false);
+
         if (err.response.status === 404) {
           console.log(err.response);
 
