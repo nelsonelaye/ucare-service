@@ -65,11 +65,13 @@ const Signup = () => {
       })
       .catch((err) => {
         setLoad(false);
-        console.log(err);
+        console.log(err.response);
+
         Swal.fire({
           icon: "error",
-          title: "Oops...!",
-          text: err.response,
+          title: "Oops...",
+          text: err.response.data.message,
+          // text: `Something went wrong!`,
         });
       });
   });

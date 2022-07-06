@@ -30,13 +30,13 @@ import AdminDash from "../Dashboards/AdminDashboard/AdminOverview";
 import { useSelector } from "react-redux";
 function MainRoutes() {
   const user = useSelector((state) => state.user);
+  console.log(user);
   const { hospitalId } = useParams();
   return (
     <>
-      {!user ? (
+      {user === null ? (
         <>
-          {hospitalId ? null : <Header />}
-
+          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/doctor-overview" element={<DocOverview />} />

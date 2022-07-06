@@ -40,11 +40,33 @@ const OTP = () => {
     const { inputOTP } = value;
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/${token}/verify`;
+    const url = `${localURL}/api/hospital/${hospitalId}/${token}/verify`;
 
     showLoad();
 
-    const res = await axios.post(url, { inputOTP });
+    const res = await axios
+      .post(url, { inputOTP })
+      .then((res) => {
+        console.log(res);
+
+        Swal.fire({
+          icon: "success",
+          title: "Account Verified!",
+          text: `<b>Login to proeed to your dashboard</b>`,
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+        navigate("/login");
+      })
+      .catch((err) => {
+        setLoad(false);
+        console.log(err);
+
+        Swal.fire({
+          icon: "error",
+          title: "Opps...",
+          text: err.response.data.message,
+        });
+      });
     // if (res.data.data) {
     //   console.log(res);
 
@@ -65,61 +87,65 @@ const OTP = () => {
     //   });
     // }
 
-    console.log(res);
+    //   console.log(res);
 
-    Swal.fire({
-      icon: "success",
-      title: "Account Verified!",
-      html: `<b>Login to proeed to your dashboard</b>`,
-    });
-    navigate("/login");
+    //   Swal.fire({
+    //     icon: "success",
+    //     title: "Account Verified!",
+    //     html: `<b>Login to proeed to your dashboard</b>`,
+    //   });
+    //   navigate("/login");
   });
 
   return (
-    <Container>
+    <>
       {load ? <LoadingState /> : null}
 
-      <Wrapper>
-        <Right>
-          <Form onSubmit={onSubmit}>
-            <Rightwrap>
-              <Welcome>
-                <nav1>Verify your account </nav1>
-                <nav>It only takes few minutes</nav>
-              </Welcome>
+      <Container>
+        <Wrapper>
+          <Right>
+            <Form onSubmit={onSubmit}>
+              <Rightwrap>
+                <Welcome>
+                  <nav1>Verify your account </nav1>
+                  <nav>It only takes few minutes</nav>
+                </Welcome>
 
-              <Inputwrap>
-                <DoubleHold>
-                  <Input>
-                    <Error>{errors.message && errors?.message.inputOTP}</Error>
-                    <nav>
-                      OTP <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="text"
-                      placeholder="Input OTP"
-                      {...register("inputOTP")}
-                      required
-                    />
-                  </Input>
-                </DoubleHold>
-              </Inputwrap>
+                <Inputwrap>
+                  <DoubleHold>
+                    <Input>
+                      <Error>
+                        {errors.message && errors?.message.inputOTP}
+                      </Error>
+                      <nav>
+                        OTP <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="text"
+                        placeholder="Input OTP"
+                        {...register("inputOTP")}
+                        required
+                      />
+                    </Input>
+                  </DoubleHold>
+                </Inputwrap>
 
-              <Buttonwrap>
-                <Button type="submit">Submit</Button>
-              </Buttonwrap>
+                <Buttonwrap>
+                  <Button type="submit">Submit</Button>
+                </Buttonwrap>
 
-              <Option>
-                Didn't receive OTP?{" "}
-                <Link to="/login" style={{ color: "blue" }}>
-                  Resend code
-                </Link>
-              </Option>
-            </Rightwrap>
-          </Form>
-        </Right>
-      </Wrapper>
-    </Container>
+                <Option style={{ display: "none" }}>
+                  Didn't receive OTP?{" "}
+                  <Link to="/login" style={{ color: "blue" }}>
+                    Resend code
+                  </Link>
+                </Option>
+              </Rightwrap>
+            </Form>
+          </Right>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

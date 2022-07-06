@@ -80,7 +80,7 @@ const ParientArrange = () => {
   const getHospital = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}`;
 
     await axios
       .get(url)

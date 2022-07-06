@@ -56,27 +56,39 @@ const ParientArrange = () => {
     };
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/appointment/${appointmentId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}/appointment/${appointmentId}`;
 
     showLoad();
-    const res = await axios.patch(
-      url,
-      {
-        specialist,
-        department,
-        dateAndTime,
-      },
-      config
-    );
+    await axios
+      .patch(
+        url,
+        {
+          specialist,
+          department,
+          dateAndTime,
+        },
+        config
+      )
+      .then((res) => {
+        console.log(res);
 
-    console.log(res);
+        navigate("/all-appointments");
+        Swal.fire({
+          icon: "success",
+          title: "Appointment Updated!",
+          html: `<b>Send a confirmation mail to the patient</b>`,
+        });
+      })
+      .catch((err) => {
+        setLoad(false);
 
-    navigate(`/appointment/${appointmentId}`);
-    Swal.fire({
-      icon: "success",
-      title: "Appointment Updated!",
-      html: `<b>Send a confirmation mail to the patient</b>`,
-    });
+        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.response.data.message,
+        });
+      });
   });
 
   const getAppointment = async () => {
@@ -84,7 +96,6 @@ const ParientArrange = () => {
     const localURL = "http://localhost:1210";
     const url = `${mainURL}/api/hospital/appointment/${appointmentId}`;
 
-    showLoad();
     await axios
       .get(url)
       .then((res) => {
@@ -93,8 +104,6 @@ const ParientArrange = () => {
         console.log(appointment);
       })
       .catch((err) => {
-        setLoad(false);
-
         console.log(err.message);
       });
   };
@@ -264,7 +273,7 @@ const Input1 = styled.div`
 const TwoHold = styled.div`
   display: flex;
   justify-content: space-between;
-  widh: 100%;
+  width: 100%;
   padding: 10px 0px;
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -331,7 +340,6 @@ const Right = styled.div`
 `;
 const Left = styled.div`
   height: 100vh;
-  width: 15%;
   background-color: blue;
   @media screen and (max-width: 768px) {
     display: none;

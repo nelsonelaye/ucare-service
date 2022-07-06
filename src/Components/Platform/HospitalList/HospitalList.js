@@ -12,7 +12,7 @@ function HospitalList() {
   const viewHospitals = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital`;
+    const url = `${localURL}/api/hospital`;
     await axios
       .get(url)
       .then((res) => {

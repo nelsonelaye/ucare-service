@@ -16,7 +16,7 @@ const ParientArrange = () => {
   const getPatients = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/patient/all`;
+    const url = `${localURL}/api/hospital/${hospitalId}/patient/all`;
     await axios
       .get(url)
       .then((res) => {

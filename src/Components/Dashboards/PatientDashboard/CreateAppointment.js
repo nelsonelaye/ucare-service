@@ -146,7 +146,8 @@ const ParientArrange = () => {
                   <span> Patient's Name</span>
                   <input
                     type="text"
-                    placeholder="Enter your Name"
+                    placeholder={`${user.firstName} ${user.lastName}`}
+                    alue={`${user.firstName} ${user.lastName}`}
                     {...register("patientName")}
                   />
                 </Inputer>

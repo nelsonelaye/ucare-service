@@ -88,12 +88,12 @@ const DocCreate = () => {
     };
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
 
     showLoad();
     await axios
       .patch(url, formData, config)
-      .yhen((res) => {
+      .then((res) => {
         console.log(res);
         dispatch(createUser(res.data.data));
         navigate("/doctor-overview");
@@ -191,7 +191,7 @@ const DocCreate = () => {
                   <input
                     type="date"
                     placeholder={user.DOB}
-                    value={user.DOB}
+                    defaultValue={user.DOB}
                     {...register("DOB")}
                   />
                 </Inputer>

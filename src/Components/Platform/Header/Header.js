@@ -26,7 +26,10 @@ const Header = () => {
           </Link>
 
           <NavHold>
-            <Link to="/all-hospitals" style={{ textDecoration: "none" }}>
+            <Link
+              to="/all-hospitals"
+              style={{ textDecoration: "none", color: "#0000cc" }}
+            >
               <span>Find Hospitals</span>
             </Link>
 

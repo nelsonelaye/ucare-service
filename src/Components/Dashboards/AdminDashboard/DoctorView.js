@@ -23,7 +23,7 @@ const DocOverview = () => {
   const getDoctors = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
     const res = await axios.get(url);
     console.log("this doctor ", res);
     setDoctor(res.data.data);
@@ -48,7 +48,7 @@ const DocOverview = () => {
                 <Link to="/" style={{ textDecoration: "none" }}>
                   <span>Home / </span>
                 </Link>
-                <Link to="/doc" style={{ textDecoration: "none" }}>
+                <Link to="/all-specialists" style={{ textDecoration: "none" }}>
                   <span>All Doctors / </span>
                 </Link>
                 <Link

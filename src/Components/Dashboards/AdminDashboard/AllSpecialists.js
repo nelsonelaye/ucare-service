@@ -19,7 +19,7 @@ const AllSpecialists = () => {
   const getDoctors = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/doctor/all`;
+    const url = `${localURL}/api/hospital/${hospitalId}/doctor/all`;
     await axios.get(url).then((res) => {
       console.log("this is the response", res?.data?.data?.doctors);
       setAllDoctors(res?.data?.data?.doctors);

@@ -42,7 +42,7 @@ const Lets = () => {
   const getAppointments = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
+    const url = `${localURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
     await axios.get(url).then((res) => {
       console.log("this is the response", res?.data?.data);
       setAllAppointments(res?.data?.data?.appointments?.reverse());
@@ -51,7 +51,7 @@ const Lets = () => {
   const getPatients = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/patient/all`;
+    const url = `${localURL}/api/hospital/${hospitalId}/patient/all`;
     await axios.get(url).then((res) => {
       console.log("this is the Patient response", res?.data?.data?.patients);
       setAllPatients(res?.data?.data?.patients);
@@ -73,6 +73,7 @@ const Lets = () => {
             <TableCell>PatientData</TableCell>
             <TableCell>Image</TableCell>
             <TableCell>Specialists</TableCell>
+            <TableCell>Case</TableCell>
             <TableCell>Date</TableCell>
 
             <TableCell>Actions</TableCell>
@@ -104,8 +105,9 @@ const Lets = () => {
               </TableCell>
 
               <TableCell>{row.doctorName}</TableCell>
+              <TableCell>{row.patientCase}</TableCell>
               <TableCell>
-                {moment(row.dateAndTime).format("YYYY MMMMM, D hh:mm")}
+                {moment(row.dateAndTime).format("YYYY MMM, D hh:mm")}
               </TableCell>
 
               <TableCell>

@@ -69,6 +69,7 @@ const Lets = () => {
             <TableCell>PatientData</TableCell>
             <TableCell>Image</TableCell>
             <TableCell>Specialists</TableCell>
+            <TableCell>Case</TableCell>
             <TableCell>Date</TableCell>
           </TableRow>
         </TableHead>
@@ -94,8 +95,9 @@ const Lets = () => {
               </TableCell>
 
               <TableCell>{row.doctorName}</TableCell>
+              <TableCell>{row.patientCase}</TableCell>
               <TableCell>
-                {moment(row.dateAndTime).format("MMMMM D, YYYY  hh:mm")}
+                {moment(row.dateAndTime).format("YYYY MMM, D  hh:mm")}
               </TableCell>
             </TableRow>
           ))}

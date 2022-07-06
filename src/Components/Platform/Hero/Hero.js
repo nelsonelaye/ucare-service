@@ -15,7 +15,7 @@ const Hero = () => {
             <Layer1>Best Hospital management ERP</Layer1>
             <Layer2>
               <Trust>
-                U-Care Hospital <br /> Management ERP{" "}
+                ERP Platform for Day-to-Day Management of your Hospital{" "}
               </Trust>
               <Best>
                 Best Features availability & Elegant Hospital, Medical & <br />{" "}
@@ -227,7 +227,7 @@ const Img1 = styled.img`
   width: 50px;
 `;
 const Left = styled.div`
-  width: 50%;
+  width: 450px;
   display: flex;
   /* justify-content: center; */
   /* align-items: center; */

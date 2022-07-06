@@ -68,7 +68,7 @@ const SignUp = () => {
     } = value;
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital`;
+    const url = `${localURL}/api/hospital`;
 
     const formData = new FormData();
     formData.append("hospitalName", hospitalName);
@@ -95,7 +95,9 @@ const SignUp = () => {
           title: "Successful!",
           text: "Now proceed to login.",
         });
-        navigate("/login");
+        // setLoad(false);
+
+        navigate("/login`");
       })
       .catch((err) => {
         setLoad(false);
@@ -103,7 +105,7 @@ const SignUp = () => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Failed. Please check your details and try again.",
+          text: err.response.data.message,
           // text: `Something went wrong!`,
         });
       });

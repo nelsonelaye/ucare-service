@@ -41,7 +41,7 @@ const SignIn = () => {
     const { email, password } = value;
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${mainURL}/api/hospital/${hospitalId}/doctor/login`;
+    const url = `${localURL}/api/hospital/${hospitalId}/doctor/login`;
 
     showLoad();
     await axios
@@ -58,42 +58,48 @@ const SignIn = () => {
       })
       .catch((err) => {
         setLoad(false);
+        console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.response.data.message,
+        });
 
-        if (err.response.status === 404) {
-          console.log(err.response);
+        // if (err.response.status === 404) {
+        //   console.log(err.response);
 
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "User not found",
-            // text: `Something went wrong!`,
-          });
-        } else if (err.response.status === 400) {
-          console.log(err.response);
+        //   Swal.fire({
+        //     icon: "error",
+        //     title: "Oops...",
+        //     text: "User not found",
+        //     // text: `Something went wrong!`,
+        //   });
+        // } else if (err.response.status === 400) {
+        //   console.log(err.response);
 
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Password is incorrect",
-            // text: `Something went wrong!`,
-          });
-        } else if (err.response.status === 401) {
-          console.log(err.response);
+        //   Swal.fire({
+        //     icon: "error",
+        //     title: "Oops...",
+        //     text: "Password is incorrect",
+        //     // text: `Something went wrong!`,
+        //   });
+        // } else if (err.response.status === 401) {
+        //   console.log(err.response);
 
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "You are not verified. Check your mail for verification link.",
-            // text: `Something went wrong!`,
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: err.response.message,
-            // text: `Something went wrong!`,
-          });
-        }
+        //   Swal.fire({
+        //     icon: "error",
+        //     title: "Oops...",
+        //     text: "You are not verified. Check your mail for verification link.",
+        //     // text: `Something went wrong!`,
+        //   });
+        // } else {
+        //   Swal.fire({
+        //     icon: "error",
+        //     title: "Oops...",
+        //     text: err.response.message,
+        //     // text: `Something went wrong!`,
+        //   });
+        // }
       });
 
     // if (res.data.data) {
