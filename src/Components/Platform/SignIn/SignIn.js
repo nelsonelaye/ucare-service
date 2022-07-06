@@ -124,65 +124,69 @@ const SignIn = () => {
     // }
   });
   return (
-    <Container>
+    <>
       {load ? <LoadingState /> : null}
 
-      <Wrapper>
-        <Right>
-          <Form onSubmit={onSubmit} type="multipart/form-data">
-            <Rightwrap>
-              <Welcome>
-                <nav1>Welcome back</nav1>
+      <Container>
+        <Wrapper>
+          <Right>
+            <Form onSubmit={onSubmit} type="multipart/form-data">
+              <Rightwrap>
+                <Welcome>
+                  <nav1>Welcome back</nav1>
 
-                <nav>Please enter the correct details below</nav>
-              </Welcome>
+                  <nav>Please enter the correct details below</nav>
+                </Welcome>
 
-              <Inputwrap>
-                <DoubleHold>
-                  <Input>
-                    <Error>{errors.message && errors?.message.email}</Error>
-                    <nav>
-                      Email <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      {...register("email")}
-                      required
-                    />
-                  </Input>
-                </DoubleHold>
+                <Inputwrap>
+                  <DoubleHold>
+                    <Input>
+                      <Error>{errors.message && errors?.message.email}</Error>
+                      <nav>
+                        Email <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        {...register("email")}
+                        required
+                      />
+                    </Input>
+                  </DoubleHold>
 
-                <DoubleHold>
-                  <Input>
-                    <nav>
-                      Password <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      {...register("password")}
-                      required
-                    />
-                    <Error>{errors.message && errors?.message.password}</Error>
-                  </Input>
-                </DoubleHold>
-              </Inputwrap>
+                  <DoubleHold>
+                    <Input>
+                      <nav>
+                        Password <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        {...register("password")}
+                        required
+                      />
+                      <Error>
+                        {errors.message && errors?.message.password}
+                      </Error>
+                    </Input>
+                  </DoubleHold>
+                </Inputwrap>
 
-              <Buttonwrap>
-                <Button type="submit">Login</Button>
-              </Buttonwrap>
-              <Option>
-                Don't have an account?{" "}
-                <Link to="/register" style={{ color: "blue" }}>
-                  Register for free
-                </Link>
-              </Option>
-            </Rightwrap>
-          </Form>
-        </Right>
-      </Wrapper>
-    </Container>
+                <Buttonwrap>
+                  <Button type="submit">Login</Button>
+                </Buttonwrap>
+                <Option>
+                  Don't have an account?{" "}
+                  <Link to="/register" style={{ color: "blue" }}>
+                    Register for free
+                  </Link>
+                </Option>
+              </Rightwrap>
+            </Form>
+          </Right>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

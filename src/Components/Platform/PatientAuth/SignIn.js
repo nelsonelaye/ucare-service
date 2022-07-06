@@ -126,48 +126,50 @@ const SignIn = () => {
   });
 
   return (
-    <Cont>
+    <>
       {load ? <LoadingState /> : null}
 
-      <Card>
-        <Text>
-          <h1>
-            Hello Patient,
-            <br />
-            welcome back
-          </h1>
-        </Text>
-        <Inp onSubmit={onSubmit}>
-          <Meracle>
-            <input
-              placeholder="E-mail"
-              type="email"
-              {...register("email")}
-              required
-            />
-          </Meracle>
+      <Cont>
+        <Card>
+          <Text>
+            <h1>
+              Hello Patient,
+              <br />
+              welcome back
+            </h1>
+          </Text>
+          <Inp onSubmit={onSubmit}>
+            <Meracle>
+              <input
+                placeholder="E-mail"
+                type="email"
+                {...register("email")}
+                required
+              />
+            </Meracle>
 
-          <Meracle>
-            <input
-              placeholder="Enter Password"
-              type="password"
-              {...register("password")}
-              required
-            />
-          </Meracle>
+            <Meracle>
+              <input
+                placeholder="Enter Password"
+                type="password"
+                {...register("password")}
+                required
+              />
+            </Meracle>
 
-          <Forgot style={{ display: "none" }}>Forgot your password</Forgot>
-          <Button type="submit">Sign in</Button>
-        </Inp>
+            <Forgot style={{ display: "none" }}>Forgot your password</Forgot>
+            <Button type="submit">Sign in</Button>
+          </Inp>
 
-        <Alr>
-          new here?{" "}
-          <Link to="signup" style={{ textDecorationColor: "blue" }}>
-            <span>sign up instead</span>
-          </Link>
-        </Alr>
-      </Card>
-    </Cont>
+          <Alr>
+            new here?{" "}
+            <Link to="signup" style={{ textDecorationColor: "blue" }}>
+              <span>sign up instead</span>
+            </Link>
+          </Alr>
+        </Card>
+      </Cont>
+    </>
   );
 };
 

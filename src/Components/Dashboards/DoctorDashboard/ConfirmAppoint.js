@@ -102,86 +102,92 @@ const ParientArrange = () => {
     getAppointment();
   }, []);
   return (
-    <Container>
+    <>
       {load ? <LoadingState /> : null}
 
-      <Left>
-        <AdminNav />
-      </Left>
-      <Right>
-        <Headers>
-          <AdminHead />
-        </Headers>
-        <Overviews onSubmit={onSubmit}>
-          <Confirm>
-            <Title>Confirm Appointment</Title>
+      <Container>
+        <Left>
+          <AdminNav />
+        </Left>
+        <Right>
+          <Headers>
+            <AdminHead />
+          </Headers>
+          <Overviews onSubmit={onSubmit}>
+            <Confirm>
+              <Title>Confirm Appointment</Title>
 
-            <OneHold>
-              <Input1>
-                <div>{errors.time && errors.time.message}</div>
-                <span>Time</span>
-                <input
-                  type="datetime-local"
-                  placeholder="Select time"
-                  {...register("dateAndTime")}
-                />
-              </Input1>
-            </OneHold>
-            <TwoHold>
-              <Input1>
-                {errors.specialist && errors.specialist.message}
+              <OneHold>
+                <Input1>
+                  <div>{errors.time && errors.time.message}</div>
+                  <span>Time</span>
+                  <input
+                    type="datetime-local"
+                    placeholder="Select time"
+                    {...register("dateAndTime")}
+                  />
+                </Input1>
+              </OneHold>
+              <TwoHold>
+                <Input1>
+                  {errors.specialist && errors.specialist.message}
 
-                <span>Choose Specialist</span>
-                <select {...register("specialist")}>
-                  <option selected disabled>
-                    {appointment ? appointment.specialist : "Select Specialist"}
-                  </option>
-                  <option value="Surgeon">Surgeon</option>
-                  <option value="Radilologist">Radilologist</option>
-                  <option value="Psychiatrist">Psychiatrist</option>
-                  <option value="Pediatricians">Pediatricians</option>
-                  <option value="Geneticists">Geneticists</option>
-                  <option value="Nephrologists">Nephrologists</option>
-                  <option value="Sleep Medicine Specialist">
-                    Sleep Medicine Specialist
-                  </option>
-                  <option value="Gynecologists">Gynecologists</option>
-                  <option value="Dermatologists">Dermatologists</option>
-                  <option value="Other">Other</option>
-                </select>
-              </Input1>
+                  <span>Choose Specialist</span>
+                  <select {...register("specialist")}>
+                    <option selected disabled>
+                      {appointment
+                        ? appointment.specialist
+                        : "Select Specialist"}
+                    </option>
+                    <option value="Surgeon">Surgeon</option>
+                    <option value="Radilologist">Radilologist</option>
+                    <option value="Psychiatrist">Psychiatrist</option>
+                    <option value="Pediatricians">Pediatricians</option>
+                    <option value="Geneticists">Geneticists</option>
+                    <option value="Nephrologists">Nephrologists</option>
+                    <option value="Sleep Medicine Specialist">
+                      Sleep Medicine Specialist
+                    </option>
+                    <option value="Gynecologists">Gynecologists</option>
+                    <option value="Dermatologists">Dermatologists</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </Input1>
 
-              <Input1>
-                {errors.department && errors.department.message}
+                <Input1>
+                  {errors.department && errors.department.message}
 
-                <span> Select a Deparment</span>
-                <select {...register("department")}>
-                  <option selected disabled>
-                    {appointment ? appointment.department : "Select department"}
-                  </option>
-                  <option value="Intensive Care Unit">ICU</option>
-                  <option value="Nutrition and Dietetics">
-                    Nutrition and Dietetics
-                  </option>
-                  <option value="Pharmacy">Pharmacy</option>
-                  <option value="Sexual Health">Sexual Health</option>
-                  <option value="Physiotherapy">Physiotherapy</option>
-                  <option value="Medicine">Medicine</option>
-                  <option value="Skin">Skin</option>
-                  <option value="Dental">Dental</option>
-                  <option value="Eye Centre">Eye Centre</option>
-                  <option value="Maternity">Maternity</option>
-                  <option value="Cardiology">Cardiology</option>
-                  <option value="General Surgery">General Surgery</option>
-                </select>
-              </Input1>
-            </TwoHold>
+                  <span> Select a Deparment</span>
+                  <select {...register("department")}>
+                    <option selected disabled>
+                      {appointment
+                        ? appointment.department
+                        : "Select department"}
+                    </option>
+                    <option value="Intensive Care Unit">ICU</option>
+                    <option value="Nutrition and Dietetics">
+                      Nutrition and Dietetics
+                    </option>
+                    <option value="Pharmacy">Pharmacy</option>
+                    <option value="Sexual Health">Sexual Health</option>
+                    <option value="Physiotherapy">Physiotherapy</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Skin">Skin</option>
+                    <option value="Dental">Dental</option>
+                    <option value="Eye Centre">Eye Centre</option>
+                    <option value="Maternity">Maternity</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="General Surgery">General Surgery</option>
+                  </select>
+                </Input1>
+              </TwoHold>
 
-            <Buttons type="submit">Submit</Buttons>
-          </Confirm>
-        </Overviews>
-      </Right>
-    </Container>
+              <Buttons type="submit">Submit</Buttons>
+            </Confirm>
+          </Overviews>
+        </Right>
+      </Container>
+    </>
   );
 };
 

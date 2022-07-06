@@ -126,149 +126,152 @@ const ParientArrange = () => {
     getDoctors();
   }, []);
   return (
-    <Container>
+    <>
       {load ? <LoadingState /> : null}
-      <Left>
-        <AdminNav />
-      </Left>
-      <Right>
-        <Headers>
-          <AdminHead />
-        </Headers>
-        <Overviews>
-          <MainHold>
-            <BlueBack>Schedule An Appointment</BlueBack>
-            <AllForm onSubmit={onSubmit}>
-              <Inputer>
-                {errors.patientName && errors.patientName.message}
-                <span> Patient's Name</span>
-                <input
-                  type="text"
-                  placeholder="Enter your Name"
-                  {...register("patientName")}
-                />
-              </Inputer>
-              <Inputer>
-                {errors.patientCase && errors.patientCase.message}
-                <span>Case</span>
-                <input
-                  type="text"
-                  placeholder="Describe your illness"
-                  {...register("patientCase")}
-                />
-              </Inputer>
-              <Inputer>
-                {errors.symptoms && errors.symptoms.message}
-                <span> Symptoms</span>
-                <textarea
-                  type="text"
-                  placeholder="What symtoms are you experiencing"
-                  {...register("symptoms")}
-                />
-              </Inputer>
-              <Inputer>
-                {errors.allergies && errors.allergies.message}
-                <span>Allergies</span>
-                <textarea
-                  type="text"
-                  placeholder="State your allergies if any"
-                  {...register("allergies")}
-                />
-              </Inputer>
-              <Double>
-                <Inputer>
-                  {errors.specialist && errors.specialist.message}
 
-                  <span>Select a Specialist</span>
-                  <select {...register("specialist")}>
-                    <option selected disabled>
-                      Select Specialist
-                    </option>
-                    <option value="Surgeon">Surgeon</option>
-                    <option value="Radilologist">Radilologist</option>
-                    <option value="Psychiatrist">Psychiatrist</option>
-                    <option value="Pediatricians">Pediatricians</option>
-                    <option value="Geneticists">Geneticists</option>
-                    <option value="Nephrologists">Nephrologists</option>
-                    <option value="Sleep Medicine Specialist">
-                      Sleep Medicine Specialist
-                    </option>
-                    <option value="Gynecologists">Gynecologists</option>
-                    <option value="Dermatologists">Dermatologists</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </Inputer>
-
+      <Container>
+        <Left>
+          <AdminNav />
+        </Left>
+        <Right>
+          <Headers>
+            <AdminHead />
+          </Headers>
+          <Overviews>
+            <MainHold>
+              <BlueBack>Schedule An Appointment</BlueBack>
+              <AllForm onSubmit={onSubmit}>
                 <Inputer>
-                  {errors.department && errors.department.message}
-
-                  <span> Select a Deparment</span>
-                  <select {...register("department")}>
-                    <option selected disabled>
-                      Select a department
-                    </option>
-                    <option value="Intensive Care Unit">ICU</option>
-                    <option value="Nutrition and Dietetics">
-                      Nutrition and Dietetics
-                    </option>
-                    <option value="Pharmacy">Pharmacy</option>
-                    <option value="Sexual Health">Sexual Health</option>
-                    <option value="Physiotherapy">Physiotherapy</option>
-                    <option value="Medicine">Medicine</option>
-                    <option value="Skin">Skin</option>
-                    <option value="Dental">Dental</option>
-                    <option value="Eye Centre">Eye Centre</option>
-                    <option value="Maternity">Maternity</option>
-                    <option value="Cardiology">Cardiology</option>
-                    <option value="General Surgery">General Surgery</option>
-                  </select>
-                </Inputer>
-              </Double>
-
-              <Double>
-                <Inputer>
-                  {errors.doctorId && errors.doctorId.message}
-                  <span>Doctor</span>
-                  <select {...register("doctorId")}>
-                    <option selected disabled style={{ color: "grey" }}>
-                      Select Doctor
-                    </option>
-                    {doctors?.map((props) => (
-                      <>
-                        <option value={props._id}>
-                          {props.firstName} {props.lastName}
-                        </option>
-                      </>
-                    ))}
-                  </select>
-                </Inputer>
-                <Inputer>
-                  {errors.time && errors.time.message}
-                  <span>Time</span>
+                  {errors.patientName && errors.patientName.message}
+                  <span> Patient's Name</span>
                   <input
-                    type="datetime-local"
-                    placeholder="Select time"
-                    {...register("dateAndTime")}
+                    type="text"
+                    placeholder="Enter your Name"
+                    {...register("patientName")}
                   />
                 </Inputer>
-              </Double>
+                <Inputer>
+                  {errors.patientCase && errors.patientCase.message}
+                  <span>Case</span>
+                  <input
+                    type="text"
+                    placeholder="Describe your illness"
+                    {...register("patientCase")}
+                  />
+                </Inputer>
+                <Inputer>
+                  {errors.symptoms && errors.symptoms.message}
+                  <span> Symptoms</span>
+                  <textarea
+                    type="text"
+                    placeholder="What symtoms are you experiencing"
+                    {...register("symptoms")}
+                  />
+                </Inputer>
+                <Inputer>
+                  {errors.allergies && errors.allergies.message}
+                  <span>Allergies</span>
+                  <textarea
+                    type="text"
+                    placeholder="State your allergies if any"
+                    {...register("allergies")}
+                  />
+                </Inputer>
+                <Double>
+                  <Inputer>
+                    {errors.specialist && errors.specialist.message}
 
-              <Inputer>
-                <span>{errors.brief && errors.brief.message}</span>
-                <span> Brief</span>
-                <textarea
-                  placeholder="Brief"
-                  type="text"
-                  {...register("brief")}
-                />
-              </Inputer>
+                    <span>Select a Specialist</span>
+                    <select {...register("specialist")}>
+                      <option selected disabled>
+                        Select Specialist
+                      </option>
+                      <option value="Surgeon">Surgeon</option>
+                      <option value="Radilologist">Radilologist</option>
+                      <option value="Psychiatrist">Psychiatrist</option>
+                      <option value="Pediatricians">Pediatricians</option>
+                      <option value="Geneticists">Geneticists</option>
+                      <option value="Nephrologists">Nephrologists</option>
+                      <option value="Sleep Medicine Specialist">
+                        Sleep Medicine Specialist
+                      </option>
+                      <option value="Gynecologists">Gynecologists</option>
+                      <option value="Dermatologists">Dermatologists</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </Inputer>
 
-              <Buttons type="submit">Submit</Buttons>
-            </AllForm>
-          </MainHold>
-        </Overviews>
-      </Right>
-    </Container>
+                  <Inputer>
+                    {errors.department && errors.department.message}
+
+                    <span> Select a Deparment</span>
+                    <select {...register("department")}>
+                      <option selected disabled>
+                        Select a department
+                      </option>
+                      <option value="Intensive Care Unit">ICU</option>
+                      <option value="Nutrition and Dietetics">
+                        Nutrition and Dietetics
+                      </option>
+                      <option value="Pharmacy">Pharmacy</option>
+                      <option value="Sexual Health">Sexual Health</option>
+                      <option value="Physiotherapy">Physiotherapy</option>
+                      <option value="Medicine">Medicine</option>
+                      <option value="Skin">Skin</option>
+                      <option value="Dental">Dental</option>
+                      <option value="Eye Centre">Eye Centre</option>
+                      <option value="Maternity">Maternity</option>
+                      <option value="Cardiology">Cardiology</option>
+                      <option value="General Surgery">General Surgery</option>
+                    </select>
+                  </Inputer>
+                </Double>
+
+                <Double>
+                  <Inputer>
+                    {errors.doctorId && errors.doctorId.message}
+                    <span>Doctor</span>
+                    <select {...register("doctorId")}>
+                      <option selected disabled style={{ color: "grey" }}>
+                        Select Doctor
+                      </option>
+                      {doctors?.map((props) => (
+                        <>
+                          <option value={props._id}>
+                            {props.firstName} {props.lastName}
+                          </option>
+                        </>
+                      ))}
+                    </select>
+                  </Inputer>
+                  <Inputer>
+                    {errors.time && errors.time.message}
+                    <span>Time</span>
+                    <input
+                      type="datetime-local"
+                      placeholder="Select time"
+                      {...register("dateAndTime")}
+                    />
+                  </Inputer>
+                </Double>
+
+                <Inputer>
+                  <span>{errors.brief && errors.brief.message}</span>
+                  <span> Brief</span>
+                  <textarea
+                    placeholder="Brief"
+                    type="text"
+                    {...register("brief")}
+                  />
+                </Inputer>
+
+                <Buttons type="submit">Submit</Buttons>
+              </AllForm>
+            </MainHold>
+          </Overviews>
+        </Right>
+      </Container>
+    </>
   );
 };
 

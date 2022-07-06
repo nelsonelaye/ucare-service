@@ -96,73 +96,75 @@ const Signup = () => {
   });
 
   return (
-    <Cont>
+    <>
       {load ? <LoadingState /> : null}
 
-      <Card>
-        <Text>
-          <h1>Get on Board</h1>
-        </Text>
-        <Inp onSubmit={onSubmit}>
-          <Meracle>
-            <input
-              type="text"
-              placeholder="First Name"
-              {...register("firstName")}
-            />
-          </Meracle>
-          <Meracle>
-            <input
-              type="text"
-              placeholder="Last Name"
-              {...register("lastName")}
-            />
-          </Meracle>
+      <Cont>
+        <Card>
+          <Text>
+            <h1>Get on Board</h1>
+          </Text>
+          <Inp onSubmit={onSubmit}>
+            <Meracle>
+              <input
+                type="text"
+                placeholder="First Name"
+                {...register("firstName")}
+              />
+            </Meracle>
+            <Meracle>
+              <input
+                type="text"
+                placeholder="Last Name"
+                {...register("lastName")}
+              />
+            </Meracle>
 
-          <Meracle>
-            <input type="email" placeholder="E-mail" {...register("email")} />
-          </Meracle>
-          <Meracle>
-            <input
-              type="text"
-              placeholder="Hospital Key"
-              {...register("inputKey")}
-            />
-          </Meracle>
+            <Meracle>
+              <input type="email" placeholder="E-mail" {...register("email")} />
+            </Meracle>
+            <Meracle>
+              <input
+                type="text"
+                placeholder="Hospital Key"
+                {...register("inputKey")}
+              />
+            </Meracle>
 
-          <Meracle>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              {...register("password")}
-            />
-          </Meracle>
+            <Meracle>
+              <input
+                type="password"
+                placeholder="Enter Password"
+                {...register("password")}
+              />
+            </Meracle>
 
-          <Meracle>
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              {...register("confirm")}
-            />
-          </Meracle>
+            <Meracle>
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                {...register("confirm")}
+              />
+            </Meracle>
 
-          <Button type="submit">Sign up</Button>
-        </Inp>
+            <Button type="submit">Sign up</Button>
+          </Inp>
 
-        <Forgot>
-          By creating an account,you agree to the
-          <br />
-          Terms and use and privacy and policy
-        </Forgot>
+          <Forgot>
+            By creating an account,you agree to the
+            <br />
+            Terms and use and privacy and policy
+          </Forgot>
 
-        <Link
-          to={`/hospital/${hospitalId}/doctor`}
-          style={{ textDecorationColor: "blue" }}
-        >
-          <Alr>I am already a member</Alr>
-        </Link>
-      </Card>
-    </Cont>
+          <Link
+            to={`/hospital/${hospitalId}/doctor`}
+            style={{ textDecorationColor: "blue" }}
+          >
+            <Alr>I am already a member</Alr>
+          </Link>
+        </Card>
+      </Cont>
+    </>
   );
 };
 

@@ -122,132 +122,135 @@ const UpdatePatient = () => {
   });
 
   return (
-    <Container>
+    <>
       {load ? <LoadingState /> : null}
-      <Left>
-        <AdminNav />
-      </Left>
-      <Right>
-        <Headers>
-          <AdminHead />
-        </Headers>
-        <Overviews>
-          <MainHold>
-            <BlueBack>Update Profile</BlueBack>
-            <AllForm onSubmit={onSubmit}>
-              <ImageHolder>
-                <Image src={initImage} />
-                <ImageLabel htmlFor="pix">Upload Avatar</ImageLabel>
-                <ImageInput
-                  id="pix"
-                  onChange={handleImage}
-                  type="file"
-                  accept="image/*"
-                />
-              </ImageHolder>
 
-              <Inputer>
-                <span>First Name</span>
-                <input
-                  type="text"
-                  placeholder={user.firstName}
-                  defaultValue={user.firstName}
-                  {...register("firstName")}
-                />
-              </Inputer>
-              <Inputer>
-                <span>Last Name</span>
-                <input
-                  type="text"
-                  placeholder={user.lastName}
-                  defaultValue={user.lastName}
-                  {...register("lastName")}
-                />
-              </Inputer>
-              <Inputer>
-                <span> Date of Birth</span>
-                <input
-                  type="date"
-                  placeholder={user.DOB}
-                  {...register("DOB")}
-                />
-              </Inputer>
-              <Inputer>
-                <span> Gender</span>
-                <select {...register("gender")}>
-                  <option
-                    selected
-                    style={{ color: "grey" }}
-                    value={user.gender}
-                  >
-                    {user.gender}
-                  </option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </Inputer>
-              <Inputer>
-                <span> Blood Group</span>
-                <select {...register("bloodGroup")}>
-                  <option
-                    selected
-                    style={{ color: "grey" }}
-                    value={user.bloodGroup}
-                  >
-                    {user.bloodGroup}
-                  </option>
-                  <option value="A+">A+</option>
-                  <option value="A-">A-</option>
-                  <option value="B+">B+</option>
-                  <option value="B-">B-</option>
-                  <option value="AB+">AB+</option>
-                  <option value="AB-">AB-</option>
-                  <option value="O-">O-</option>
-                  <option value="O+">O+</option>
-                </select>
-              </Inputer>
-              <Inputer>
-                <span> Weight</span>
-                <input
-                  type="number"
-                  placeholder={user.weight}
-                  defaultValue={user.weight}
-                  {...register("weight")}
-                />
-              </Inputer>
-              <Inputer>
-                <span> Height</span>
-                <input
-                  type="number"
-                  placeholder={user.height}
-                  defaultValue={user.height}
-                  {...register("height")}
-                />
-              </Inputer>
-              <Inputer>
-                <span>Contact</span>
-                <input
-                  type="tel"
-                  placeholder={user.telephone}
-                  defaultValue={user.telephone}
-                  {...register("telephone")}
-                />
-              </Inputer>
-              <Inputer>
-                <span> Address</span>
-                <input
-                  type="text"
-                  placeholder="Enter your Address"
-                  defaultValue={user.address}
-                  {...register("address")}
-                />
-              </Inputer>
-              <Buttons type="submit">Update</Buttons>
-            </AllForm>
-          </MainHold>
-        </Overviews>
-      </Right>
-    </Container>
+      <Container>
+        <Left>
+          <AdminNav />
+        </Left>
+        <Right>
+          <Headers>
+            <AdminHead />
+          </Headers>
+          <Overviews>
+            <MainHold>
+              <BlueBack>Update Profile</BlueBack>
+              <AllForm onSubmit={onSubmit}>
+                <ImageHolder>
+                  <Image src={initImage} />
+                  <ImageLabel htmlFor="pix">Upload Avatar</ImageLabel>
+                  <ImageInput
+                    id="pix"
+                    onChange={handleImage}
+                    type="file"
+                    accept="image/*"
+                  />
+                </ImageHolder>
+
+                <Inputer>
+                  <span>First Name</span>
+                  <input
+                    type="text"
+                    placeholder={user.firstName}
+                    defaultValue={user.firstName}
+                    {...register("firstName")}
+                  />
+                </Inputer>
+                <Inputer>
+                  <span>Last Name</span>
+                  <input
+                    type="text"
+                    placeholder={user.lastName}
+                    defaultValue={user.lastName}
+                    {...register("lastName")}
+                  />
+                </Inputer>
+                <Inputer>
+                  <span> Date of Birth</span>
+                  <input
+                    type="date"
+                    placeholder={user.DOB}
+                    {...register("DOB")}
+                  />
+                </Inputer>
+                <Inputer>
+                  <span> Gender</span>
+                  <select {...register("gender")}>
+                    <option
+                      selected
+                      style={{ color: "grey" }}
+                      value={user.gender}
+                    >
+                      {user.gender}
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </Inputer>
+                <Inputer>
+                  <span> Blood Group</span>
+                  <select {...register("bloodGroup")}>
+                    <option
+                      selected
+                      style={{ color: "grey" }}
+                      value={user.bloodGroup}
+                    >
+                      {user.bloodGroup}
+                    </option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O-">O-</option>
+                    <option value="O+">O+</option>
+                  </select>
+                </Inputer>
+                <Inputer>
+                  <span> Weight</span>
+                  <input
+                    type="number"
+                    placeholder={user.weight}
+                    defaultValue={user.weight}
+                    {...register("weight")}
+                  />
+                </Inputer>
+                <Inputer>
+                  <span> Height</span>
+                  <input
+                    type="number"
+                    placeholder={user.height}
+                    defaultValue={user.height}
+                    {...register("height")}
+                  />
+                </Inputer>
+                <Inputer>
+                  <span>Contact</span>
+                  <input
+                    type="tel"
+                    placeholder={user.telephone}
+                    defaultValue={user.telephone}
+                    {...register("telephone")}
+                  />
+                </Inputer>
+                <Inputer>
+                  <span> Address</span>
+                  <input
+                    type="text"
+                    placeholder="Enter your Address"
+                    defaultValue={user.address}
+                    {...register("address")}
+                  />
+                </Inputer>
+                <Buttons type="submit">Update</Buttons>
+              </AllForm>
+            </MainHold>
+          </Overviews>
+        </Right>
+      </Container>
+    </>
   );
 };
 

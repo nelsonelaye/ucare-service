@@ -98,6 +98,7 @@ const SignUp = () => {
         navigate("/login");
       })
       .catch((err) => {
+        setLoad(false);
         console.log(err);
         Swal.fire({
           icon: "error",
@@ -136,178 +137,184 @@ const SignUp = () => {
   });
 
   return (
-    <Container>
+    <>
       {load ? <LoadingState /> : null}
 
-      <Wrapper>
-        <Right>
-          <Form onSubmit={onSubmit} type="multipart/form-data">
-            <Rightwrap>
-              <Welcome>
-                <Nav1>Register your hospital</Nav1>
+      <Container>
+        <Wrapper>
+          <Right>
+            <Form onSubmit={onSubmit} type="multipart/form-data">
+              <Rightwrap>
+                <Welcome>
+                  <Nav1>Register your hospital</Nav1>
 
-                <nav>Start Your 30days free trial</nav>
-              </Welcome>
+                  <nav>Start Your 30days free trial</nav>
+                </Welcome>
 
-              <ImageHolder>
-                <Image src={image} />
-                <ImageLabel htmlFor="pix">Upload Logo</ImageLabel>
-                <ImageInput
-                  id="pix"
-                  onChange={handleImage}
-                  type="file"
-                  accept="image/*"
-                />
-              </ImageHolder>
+                <ImageHolder>
+                  <Image src={image} />
+                  <ImageLabel htmlFor="pix">Upload Logo</ImageLabel>
+                  <ImageInput
+                    id="pix"
+                    onChange={handleImage}
+                    type="file"
+                    accept="image/*"
+                  />
+                </ImageHolder>
 
-              <Inputwrap>
-                <DoubleHold>
-                  <Input>
-                    <Error>
-                      {errors.message && errors?.message.hospitalName}
-                    </Error>
-                    <nav>
-                      Hospital Name <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="text"
-                      placeholder=" Hospital Name"
-                      {...register("hospitalName")}
-                      required
-                    />
-                  </Input>
-                  <Input>
-                    <Error>{errors.message && errors?.message.UHID}</Error>
-                    <nav>
-                      CAC <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="text"
-                      minlength="4"
-                      placeholder="CAC Number"
-                      {...register("UHID")}
-                      required
-                    />
-                  </Input>
-                </DoubleHold>
+                <Inputwrap>
+                  <DoubleHold>
+                    <Input>
+                      <Error>
+                        {errors.message && errors?.message.hospitalName}
+                      </Error>
+                      <nav>
+                        Hospital Name <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="text"
+                        placeholder=" Hospital Name"
+                        {...register("hospitalName")}
+                        required
+                      />
+                    </Input>
+                    <Input>
+                      <Error>{errors.message && errors?.message.UHID}</Error>
+                      <nav>
+                        CAC <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="text"
+                        minlength="4"
+                        placeholder="CAC Number"
+                        {...register("UHID")}
+                        required
+                      />
+                    </Input>
+                  </DoubleHold>
 
-                <DoubleHold>
-                  <Input>
-                    <Error>
-                      {errors.message && errors?.message.description}
-                    </Error>
-                    <nav>
-                      Description <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <textarea
-                      type="text"
-                      placeholder="Give a brief of your hospital's history and servies"
-                      {...register("description")}
-                      required
-                    />
-                  </Input>
-                </DoubleHold>
+                  <DoubleHold>
+                    <Input>
+                      <Error>
+                        {errors.message && errors?.message.description}
+                      </Error>
+                      <nav>
+                        Description <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <textarea
+                        type="text"
+                        placeholder="Give a brief of your hospital's history and servies"
+                        {...register("description")}
+                        required
+                      />
+                    </Input>
+                  </DoubleHold>
 
-                <DoubleHold>
-                  <Input>
-                    <Error>{errors.message && errors?.message.email}</Error>
-                    <nav>
-                      Email <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="email"
-                      placeholder="example@gmail.com"
-                      {...register("email")}
-                      required
-                    />
-                  </Input>
+                  <DoubleHold>
+                    <Input>
+                      <Error>{errors.message && errors?.message.email}</Error>
+                      <nav>
+                        Email <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="email"
+                        placeholder="example@gmail.com"
+                        {...register("email")}
+                        required
+                      />
+                    </Input>
 
-                  <Input>
-                    <Error>{errors.message && errors?.message.telephone}</Error>
-                    <nav>
-                      Telephone <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="number"
-                      placeholder="+234XXXXXXXXXX"
-                      {...register("telephone")}
-                      required
-                    />
-                  </Input>
-                </DoubleHold>
+                    <Input>
+                      <Error>
+                        {errors.message && errors?.message.telephone}
+                      </Error>
+                      <nav>
+                        Telephone <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="number"
+                        placeholder="+234XXXXXXXXXX"
+                        {...register("telephone")}
+                        required
+                      />
+                    </Input>
+                  </DoubleHold>
 
-                <DoubleHold>
-                  <Input>
-                    <Error>{errors.message && errors?.message.city}</Error>
-                    <nav>
-                      City <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="text"
-                      placeholder="City"
-                      {...register("city")}
-                      required
-                    />
-                  </Input>
+                  <DoubleHold>
+                    <Input>
+                      <Error>{errors.message && errors?.message.city}</Error>
+                      <nav>
+                        City <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="text"
+                        placeholder="City"
+                        {...register("city")}
+                        required
+                      />
+                    </Input>
 
-                  <Input>
-                    <Error>{errors.message && errors?.message.address}</Error>
-                    <nav>
-                      Address <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="text"
-                      placeholder="Address"
-                      {...register("address")}
-                      required
-                    />
-                  </Input>
-                </DoubleHold>
+                    <Input>
+                      <Error>{errors.message && errors?.message.address}</Error>
+                      <nav>
+                        Address <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="text"
+                        placeholder="Address"
+                        {...register("address")}
+                        required
+                      />
+                    </Input>
+                  </DoubleHold>
 
-                <DoubleHold>
-                  <Input>
-                    <nav>
-                      Password <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="password"
-                      placeholder="Password"
-                      {...register("password")}
-                      required
-                    />
-                    <Error>{errors.message && errors?.message.password}</Error>
-                  </Input>
-                  <Input>
-                    <nav>
-                      Confirm <span style={{ color: "red" }}>*</span>
-                    </nav>
-                    <input
-                      type="password"
-                      placeholder="Confirm your password"
-                      {...register("confirm")}
-                      required
-                    />
-                    <Error>{errors.message && errors?.message.confirm}</Error>
-                  </Input>
-                </DoubleHold>
-              </Inputwrap>
+                  <DoubleHold>
+                    <Input>
+                      <nav>
+                        Password <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        {...register("password")}
+                        required
+                      />
+                      <Error>
+                        {errors.message && errors?.message.password}
+                      </Error>
+                    </Input>
+                    <Input>
+                      <nav>
+                        Confirm <span style={{ color: "red" }}>*</span>
+                      </nav>
+                      <input
+                        type="password"
+                        placeholder="Confirm your password"
+                        {...register("confirm")}
+                        required
+                      />
+                      <Error>{errors.message && errors?.message.confirm}</Error>
+                    </Input>
+                  </DoubleHold>
+                </Inputwrap>
 
-              <Buttonwrap>
-                <Button type="submit">Signup</Button>
-                <Google>Signup With Google</Google>
-              </Buttonwrap>
+                <Buttonwrap>
+                  <Button type="submit">Signup</Button>
+                  <Google>Signup With Google</Google>
+                </Buttonwrap>
 
-              <Option>
-                Already have an account?{" "}
-                <Link to="/login" style={{ color: "blue" }}>
-                  Log in here
-                </Link>
-              </Option>
-            </Rightwrap>
-          </Form>
-        </Right>
-      </Wrapper>
-    </Container>
+                <Option>
+                  Already have an account?{" "}
+                  <Link to="/login" style={{ color: "blue" }}>
+                    Log in here
+                  </Link>
+                </Option>
+              </Rightwrap>
+            </Form>
+          </Right>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 
