@@ -95,9 +95,10 @@ const SignUp = () => {
           title: "Successful!",
           text: "Now proceed to login.",
         });
-        // setLoad(false);
+        setLoad(false);
+        reset();
 
-        navigate("/login`");
+        // navigate("/otp");
       })
       .catch((err) => {
         setLoad(false);
