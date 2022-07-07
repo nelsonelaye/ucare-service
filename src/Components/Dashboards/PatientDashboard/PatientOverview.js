@@ -79,7 +79,9 @@ const PatientOverview = () => {
                       <Title>Date of Birth:</Title>
                       <Show>
                         <BsCalendar2DateFill />
-                        <span>{moment(user.DOB).format("MMMM d, YYYY")}</span>
+                        {user.DOB ? (
+                          <span>{moment(user.DOB).format("YYYY MMM, D")}</span>
+                        ) : null}
                       </Show>
                     </GenWrap>
 
