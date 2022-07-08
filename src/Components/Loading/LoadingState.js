@@ -1,5 +1,5 @@
 import React from "react";
-import GridLoader from "react-spinners/GridLoader";
+import RingLoader from "react-spinners/RingLoader";
 const LoadingState = () => {
   return (
     <div
@@ -17,7 +17,7 @@ const LoadingState = () => {
       }}
     >
       <div>
-        <GridLoader color="#fff" />
+        <RingLoader color="#fff" />
       </div>
     </div>
   );
