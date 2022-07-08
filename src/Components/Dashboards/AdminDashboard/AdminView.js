@@ -137,9 +137,7 @@ const ParientArrange = () => {
             />
           </Second>
           <Charts>
-            <Holde>
-              <Charttest />
-            </Holde>
+            <Holde></Holde>
           </Charts>
         </Overviews>
       </Right>

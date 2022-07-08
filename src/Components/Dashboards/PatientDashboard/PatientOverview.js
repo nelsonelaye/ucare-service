@@ -80,7 +80,7 @@ const PatientOverview = () => {
                       <Show>
                         <BsCalendar2DateFill />
                         {user.DOB ? (
-                          <span>{moment(user.DOB).format("YYYY MMM, D")}</span>
+                          <span>{moment(user.DOB).format("MMM d, YYY")}</span>
                         ) : null}
                       </Show>
                     </GenWrap>
