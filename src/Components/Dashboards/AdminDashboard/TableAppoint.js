@@ -42,7 +42,7 @@ const Lets = () => {
   const getAppointments = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/${hospitalId}/appointment/all`;
+    const url = `${mainURL}/api/hospital/${hospitalId}/appointment/all`;
     await axios.get(url).then((res) => {
       console.log("this is the response", res?.data?.data);
       setAllAppointments(res?.data?.data?.appointments?.reverse());
@@ -51,7 +51,7 @@ const Lets = () => {
   const getPatients = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/${hospitalId}/patient/all`;
+    const url = `${mainURL}/api/hospital/${hospitalId}/patient/all`;
     await axios.get(url).then((res) => {
       console.log("this is the Patient response", res?.data?.data?.patients);
       setAllPatients(res?.data?.data?.patients);
