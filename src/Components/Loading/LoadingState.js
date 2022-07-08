@@ -1,5 +1,5 @@
 import React from "react";
-import PuffLoader from "react-spinners/PuffLoader";
+import GridLoader from "react-spinners/GridLoader";
 const LoadingState = () => {
   return (
     <div
@@ -17,7 +17,7 @@ const LoadingState = () => {
       }}
     >
       <div>
-        <PuffLoader color="#fff" />
+        <GridLoader color="#fff" />
       </div>
     </div>
   );
