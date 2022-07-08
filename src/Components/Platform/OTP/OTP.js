@@ -52,8 +52,7 @@ const OTP = () => {
         Swal.fire({
           icon: "success",
           title: "Account Verified!",
-          text: `<b>Login to proeed to your dashboard</b>`,
-          footer: '<a href="">Why do I have this issue?</a>',
+          text: `Login to proeed to your dashboard`,
         });
         navigate("/login");
       })
