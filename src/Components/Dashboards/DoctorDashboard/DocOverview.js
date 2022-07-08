@@ -116,7 +116,7 @@ const Show = styled.div`
   align-items: center;
   /* height:auto ; */
   span {
-    font-weight: bold;
+    font-weight: 400;
     font-size: 15px;
     padding: 0px 5px;
   }

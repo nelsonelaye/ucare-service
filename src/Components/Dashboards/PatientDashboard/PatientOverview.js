@@ -234,7 +234,7 @@ const FServ = styled.div`
 `;
 const Serve = styled.div`
   span {
-    font-weight: 500;
+    font-weight: 400;
   }
 `;
 
