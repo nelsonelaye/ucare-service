@@ -239,7 +239,8 @@ const ParientArrange = () => {
                       {doctors?.map((props) => (
                         <>
                           <option value={props._id}>
-                            {props.firstName} {props.lastName}
+                            {props.firstName} {props.lastName} -{" "}
+                            {props.specialization}
                           </option>
                         </>
                       ))}
