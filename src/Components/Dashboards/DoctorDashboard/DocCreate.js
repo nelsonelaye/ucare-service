@@ -88,7 +88,7 @@ const DocCreate = () => {
     };
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
+    const url = `${mainURL}/api/hospital/${hospitalId}/doctor/${doctorId}`;
 
     showLoad();
     await axios

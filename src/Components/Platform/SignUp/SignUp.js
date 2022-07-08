@@ -68,7 +68,7 @@ const SignUp = () => {
     } = value;
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital`;
+    const url = `${mainURL}/api/hospital`;
 
     const formData = new FormData();
     formData.append("hospitalName", hospitalName);

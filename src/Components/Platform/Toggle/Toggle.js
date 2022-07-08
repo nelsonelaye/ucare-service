@@ -25,7 +25,7 @@ const SignUpe = () => {
   };
 
   useEffect(() => {
-    console.log(hospitalId);
+    getHospital();
   }, []);
   return (
     <Container>
@@ -45,7 +45,7 @@ const SignUpe = () => {
               <PatientCard>
                 <Avatar src="/assets/img2.jpg" />
                 <Notes>
-                  <span>I'm an Admin </span>
+                  <span>For Admin </span>
                   <p>Let's save lives</p>
                 </Notes>
               </PatientCard>
@@ -59,7 +59,7 @@ const SignUpe = () => {
                 <Avatar src="/assets/profbak.png" />
 
                 <Notes>
-                  <span>I'm a Doctor</span>
+                  <span>For Doctor</span>
                   <p>Giving the best care is my priority</p>
                 </Notes>
               </PatientCard>
@@ -72,7 +72,7 @@ const SignUpe = () => {
               <PatientCard>
                 <Avatar src="/assets/img1.jpg" />
                 <Notes>
-                  <span>I'm a Patient </span>
+                  <span>For Patient </span>
                   <p>Getting the best care is the ultimate</p>
                 </Notes>
               </PatientCard>
@@ -114,7 +114,7 @@ const Notes = styled.div`
   span {
     font-weight: 700;
     font-size: 12px;
-    text-transform: uppercase;
+    text-transform: capitalize;
   }
   p {
     font-size: 13px;

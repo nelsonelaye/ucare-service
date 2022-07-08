@@ -30,7 +30,7 @@ const AdminHead = () => {
   const getHospital = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/${hospitalId}`;
+    const url = `${mainURL}/api/hospital/${hospitalId}`;
     await axios
       .get(url)
       .then((res) => {

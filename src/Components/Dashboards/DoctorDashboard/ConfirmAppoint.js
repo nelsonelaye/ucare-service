@@ -56,7 +56,7 @@ const ParientArrange = () => {
     };
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/${hospitalId}/appointment/${appointmentId}`;
+    const url = `${mainURL}/api/hospital/${hospitalId}/appointment/${appointmentId}`;
 
     showLoad();
     await axios

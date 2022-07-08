@@ -44,7 +44,7 @@ const Signup = () => {
     const { email, password, firstName, lastName } = value;
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/${hospitalId}/patient`;
+    const url = `${mainURL}/api/hospital/${hospitalId}/patient`;
 
     showLoad();
     await axios

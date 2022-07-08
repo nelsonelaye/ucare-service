@@ -12,7 +12,7 @@ function HospitalList() {
   const viewHospitals = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital`;
+    const url = `${mainURL}/api/hospital`;
     await axios
       .get(url)
       .then((res) => {
@@ -45,7 +45,9 @@ function HospitalList() {
                 <Name>{props.hospitalName}</Name>
               </Link>
 
-              <Category>{props.category}</Category>
+              <Category>
+                {props.address}, {props.city}
+              </Category>
               <Links>
                 <a
                   href={`mailto:${props.email}`}
@@ -54,12 +56,12 @@ function HospitalList() {
                   {" "}
                   <MailIcon />
                 </a>
-                <a
-                  href={props.website}
-                  style={{ textDecoration: "none", color: "black" }}
+                <Link
+                  to={`/hospital/${props._id}/detail`}
+                  style={{ color: "black", textDecoration: "none" }}
                 >
                   <WebIcon />
-                </a>
+                </Link>
               </Links>
             </Card>
           );

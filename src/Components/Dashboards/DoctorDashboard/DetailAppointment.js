@@ -16,7 +16,7 @@ const ParientArrange = () => {
   const getAppointment = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/appointment/${appointmentId}`;
+    const url = `${mainURL}/api/hospital/appointment/${appointmentId}`;
     await axios
       .get(url)
       .then((res) => {
@@ -31,7 +31,7 @@ const ParientArrange = () => {
   const sendMail = async () => {
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url2 = `${localURL}/api/hospital/${hospitalId}/appointment/${appointmentId}/mail`;
+    const url2 = `${mainURL}/api/hospital/${hospitalId}/appointment/${appointmentId}/mail`;
     await axios
       .get(url2)
       .then((res) => {

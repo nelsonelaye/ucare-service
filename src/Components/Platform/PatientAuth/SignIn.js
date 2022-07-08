@@ -42,7 +42,7 @@ const SignIn = () => {
     const { email, password } = value;
     const mainURL = "https://ucarebackend.herokuapp.com";
     const localURL = "http://localhost:1210";
-    const url = `${localURL}/api/hospital/${hospitalId}/patient/login`;
+    const url = `${mainURL}/api/hospital/${hospitalId}/patient/login`;
 
     showLoad();
     await axios
