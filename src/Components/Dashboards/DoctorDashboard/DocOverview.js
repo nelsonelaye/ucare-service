@@ -106,6 +106,7 @@ const DocOverview = () => {
 export default DocOverview;
 const Title = styled.div`
   font-size: 13px;
+  font-weight: 500;
   padding: 10px 0px;
 `;
 const Show = styled.div`
