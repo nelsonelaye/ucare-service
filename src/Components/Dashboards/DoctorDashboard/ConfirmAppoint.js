@@ -239,6 +239,7 @@ const Buttons = styled.button`
 const Input1 = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 0.5;
   input {
     display: flex;
     border-radius: 5px;
@@ -274,6 +275,7 @@ const TwoHold = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
   padding: 10px 0px;
   @media screen and (max-width: 768px) {
     flex-direction: column;
