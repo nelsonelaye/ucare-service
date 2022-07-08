@@ -256,7 +256,7 @@ const Input1 = styled.div`
   select {
     display: flex;
     border-radius: 5px;
-    width: 300px;
+    width: 100%;
     // padding: 10px 5px;
     height: 40px;
     border: 1px solid gray;
