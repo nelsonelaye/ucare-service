@@ -239,7 +239,7 @@ const Buttons = styled.button`
 const Input1 = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 0.5;
+  flex: 0.48;
   input {
     display: flex;
     border-radius: 5px;
@@ -307,9 +307,11 @@ const Title = styled.div`
   padding: 10px 0px;
 `;
 const Confirm = styled.div`
-  border: 1px solid grey;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  margin-top: 30px;
   width: 60%;
-  height: 550px;
+  height: 450px;
   background: white;
   padding: 10px 50px;
   @media screen and (max-width: 768px) {
