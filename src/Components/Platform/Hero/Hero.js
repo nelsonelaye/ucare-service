@@ -129,6 +129,7 @@ const Layer1 = styled.div`
   align-items: center;
   margin-top: 40px;
   height: 40px;
+  padding: 0 10px;
   width: 400px;
   font-family: "Poppins", sans-serif;
   background-color: rgba(0, 0, 255, 0.1);
