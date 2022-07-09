@@ -12,7 +12,7 @@ const Hero = () => {
       <Wrapper>
         <Uplayer>
           <Left>
-            <Layer1>Best ERP platform for Hospital Management </Layer1>
+            <Layer1>Best ERP platform for Hospital </Layer1>
             <Layer2>
               <Trust>
                 We help hospitals automate and optimize their everyday
